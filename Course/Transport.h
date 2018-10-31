@@ -1,8 +1,10 @@
 #pragma once
-class Transport
-{
+class Transport{
+
+	static int number_of_machines;
 public:
+
 	Transport();
-	virtual ~Transport();
+	virtual ~Transport()=0;	
 };
 

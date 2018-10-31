@@ -1,8 +1,8 @@
 #pragma once
-class Driver
-{
+class Driver{
+
 public:
 	Driver();
-	virtual ~Driver();
+	virtual ~Driver()=0;
 };
 

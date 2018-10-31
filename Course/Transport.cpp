@@ -2,11 +2,11 @@
 
 
 
-Transport::Transport()
-{
+Transport::Transport(){
+
 }
 
 
-Transport::~Transport()
-{
+Transport::~Transport(){
+
 }
