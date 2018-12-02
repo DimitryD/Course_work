@@ -1,5 +1,7 @@
 #pragma once
-#include <string>
+#include <iostream>
+using namespace std;
+
 class Transport{
 
 protected:
@@ -13,7 +15,7 @@ public:
 	int capacity;
 	int consumption;
 	int distance;
-
+	static string validator_version;
 	Transport();
 	virtual ~Transport()=0;	
 };

@@ -10,12 +10,15 @@ Admin authorization(string filename) {
 		_getch();
 		exit(1);
 	}
-	user.authorization();
-	while (file >> tmp)
-		if (tmp == user) {
-			tmp.authorized = true;
-			return tmp;
-		}
+	for (int i = 0; i < 3; i++) {
+		user.authorization();
+		while (file >> tmp)
+			if (tmp == user) {
+				tmp.authorized = true;
+				return tmp;
+			}
+		cout << "Authorization error. Please, try again" << endl;
+	}
 	user.authorized = false;
 	return user;
 }
@@ -39,4 +42,21 @@ string stars() {
 	} while (c != '\r');
 	str[i] = '\0';
 	return (string)str;
+}
+
+string encryption(string &str,int key) {
+	for (int i = 1; i < str.length(); i++)
+		str[i] += key;
+	return str;
+}
+
+void add_user() {
+	ifstream file("User.txt");
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+
+	return;
 }

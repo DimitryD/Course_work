@@ -1,13 +1,19 @@
 #pragma once
 #include <iostream>
-//#include <string>
 #include "Functions.h"
 using namespace std;
+
+
+//enum Role {
+//	Worker = 3,
+//	Manager = 2,
+//	Admin = 1
+//};
 
 class Admin{
 private:
 
-public:
+private:
 	string login;
 	string password;
 	string name;
@@ -20,8 +26,7 @@ public:
 	Admin();
 	~Admin();
 	void authorization();
-	friend istream& operator >>(istream& in, Admin &user)
-	{
+	friend istream& operator >>(istream& in, Admin &user){
 		return in >> user.login 
 			>> user.password
 			>> user.role 
@@ -37,21 +42,15 @@ public:
 			<< user.surname
 			<< user.position;
 	}
-	friend bool operator==(const Admin &firstUser, const Admin &secondUser)
-	{
+	friend bool operator==(const Admin &firstUser, const Admin &secondUser){
 		return firstUser.login == secondUser.login &&
 			firstUser.password == secondUser.password;
 	}
 	operator bool() {
 		return authorized;
 	}
-	//Admin &operator=(const Admin &user) {
-	//	login = user.login;
-	//	password = user.password;
-	//	name = user.name;
-	//	surname = user.surname;
-	//	role = user.role;
-	//	position = user.position;
-	//	return *this;
-	//}
+	operator int() {
+		return role;
+	}
+	void clear();
 };
