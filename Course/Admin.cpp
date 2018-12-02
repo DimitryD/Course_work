@@ -25,3 +25,56 @@ void Admin::clear() {
 	position.clear();
 	role = 0;
 }
+
+void Admin::create() {
+	system("cls");
+	string buff;
+	cout << "Enter login:";
+	cin >> login;
+	do {
+		cout << "Enter password:";
+		password = stars();
+		cout << "Enter password again:";
+		buff = stars();
+	} while (password.compare(buff));
+	encryption(password,1);
+	cout << "Enter name:";
+	cin >> name;
+	cout << "Enter surname:";
+	cin >> surname;
+	cout << "Enter position:";
+	cin >> position;
+	cout << "Enter access level:";
+	enter_number(role,1);
+}
+
+istream& operator >>(istream& in, Admin &user) {
+	return in >> user.login
+		>> user.password
+		>> user.role
+		>> user.name
+		>> user.surname
+		>> user.position;
+}
+
+ostream& operator <<(ostream& out, Admin &user) {
+	return out << user.login << ' '
+		<< user.password << ' '
+		<< user.role << ' '
+		<< user.name << ' '
+		<< user.surname << ' '
+		<< user.position << endl;
+}
+
+bool operator==(const Admin &firstUser, const Admin &secondUser) {
+	return firstUser.login == secondUser.login &&
+		firstUser.password == secondUser.password;
+}
+
+Admin::operator bool() {
+	return authorized;
+}
+
+Admin::operator int() {
+	return role;
+}

@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "Stuff.cpp"
+//#include "Stuff.cpp"
 #include <conio.h>
 #include "Functions.h"
 
@@ -74,7 +74,7 @@ void Menu::menu_user(int role) {
 			int  k = 0;
 			switch (role) {
 			case 1:
-				if (menu_pointer == ++k) add_user();
+				if (menu_pointer == ++k) menu_user_manage();
 			case 2:
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
@@ -93,3 +93,37 @@ void Menu::menu_user(int role) {
 	} while (1);
 }
 
+void Menu::menu_user_manage() {
+	menu_pointer = 1;
+	char c;
+	do {
+		system("cls");
+		print_in_menu(1, "Add user");
+		print_in_menu(2, "Change user");
+		print_in_menu(3, "Delete user");
+		print_in_menu(4, "Exit");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 4)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				add_user();
+				break;
+			case 2:
+
+				break;
+			case 3:
+
+				break;
+			case 4:
+				menu_pointer = 1;
+				return;
+			}
+		}
+	} while (1);
+}

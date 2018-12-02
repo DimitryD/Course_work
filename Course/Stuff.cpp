@@ -1,5 +1,4 @@
 #include "Stuff.h"
-#include <Windows.h>
 
 template<int txt = 7, int bg = 0>
 ostream& color(ostream &text) {
@@ -9,23 +8,21 @@ ostream& color(ostream &text) {
 }
 
 template <typename T>
-void GetNumber(T & variable)
-{
-	if (strcmp(typeid(variable).name(), "int") == 0)
-	{
+void enter_number(T & variable,int length){
+	if (strcmp(typeid(variable).name(), "int") == 0){
 		char c, mas[10];
 		int i = 0;
 		while (1) {
 			do {
 				c = _getch();
 			} while (!(c >= 48 && c <= 57) && c != '\r' && c != '\b');
-			if (c != '\r' && c != '\b'&& i != 5) {
+			if (c != '\r' && c != '\b'&& i != length) {
 				mas[i] = c;
 				i++;
-				printf("%c", c);
+				cout << c;
 			}
 			else if (c == '\b' && i != 0) {
-				printf("\b \b");
+				cout<<"\b \b";
 				i--;
 			}
 			else if (c == '\r' && i != 0)
@@ -33,7 +30,7 @@ void GetNumber(T & variable)
 		}
 		mas[i] = '\0';
 		variable = atoi(mas);
-		puts("\r");
+		cout << '\n';
 		return;
 	}
 	else if (strcmp(typeid(variable).name(), "float") == 0) {

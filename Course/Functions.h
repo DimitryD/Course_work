@@ -3,8 +3,9 @@
 #include <fstream>
 #include <conio.h>
 #include <string>
-#include <vector>
+//#include <vector>
 #include "Admin.h"
+#include "Stuff.cpp"
 using namespace std;
 
 class Admin;

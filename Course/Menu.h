@@ -8,6 +8,7 @@ public:
 	~Menu();
 	void menu_authorization();
 	void menu_user(int role);
+	void menu_user_manage();
 	void print_in_menu(int pointer, const char *str);
 };
 

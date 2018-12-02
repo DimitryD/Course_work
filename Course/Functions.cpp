@@ -41,6 +41,7 @@ string stars() {
 		}
 	} while (c != '\r');
 	str[i] = '\0';
+	cout << '\n';
 	return (string)str;
 }
 
@@ -51,12 +52,14 @@ string encryption(string &str,int key) {
 }
 
 void add_user() {
-	ifstream file("User.txt");
+	ofstream file("User.txt",ofstream::app);
 	if (!file) {
 		cout << "Error";
 		_getch();
 		exit(1);
 	}
-
+	Admin user;
+	user.create();
+	file << user;
 	return;
 }
