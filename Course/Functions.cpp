@@ -1,6 +1,5 @@
 #include "Functions.h"
 
-
 Admin authorization(string filename) {
 	Admin tmp, user;
 	ifstream file(filename);
@@ -52,14 +51,141 @@ string encryption(string &str,int key) {
 }
 
 void add_user() {
-	ofstream file("User.txt",ofstream::app);
+
+	Admin user;
+	do {
+		user.clear();
+		user.create();
+		system("cls");
+	} while (check_uniq_login(user));
+	ofstream file("User.txt", ofstream::app);
 	if (!file) {
 		cout << "Error";
 		_getch();
 		exit(1);
 	}
-	Admin user;
-	user.create();
 	file << user;
+	return;
+}
+
+bool check_uniq_login(Admin user) {
+	Admin tmp;
+	ifstream file("User.txt");
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	while (file >> tmp) {
+		if (!user.compare(tmp)) {
+			cout << "Login has been taken" << endl;
+			return true;
+		}
+	}
+	return false;
+}
+
+void edit_user() {
+
+	string login;
+	Admin tmp;
+	bool flag = 0;
+	cout << "Enter login:";
+	cin >> login;
+	vector <Admin> users;
+	{
+		ifstream file("User.txt");
+		if (!file) {
+			cout << "Error";
+			_getch();
+			exit(1);
+		}
+		while (file >> tmp) {
+			users.push_back(tmp);
+		}
+	}
+	for (int i=0;i<users.size();i++)
+		if (users[i] == login) {
+			flag = 1;
+			users[i].clear();
+			users[i].create();
+			break;
+		}
+	if(flag){
+		ofstream file("User.txt");
+		if (!file) {
+			cout << "Error";
+			_getch();
+			exit(1);
+		}
+		for (auto i : users) {
+			file << i;
+		}
+		system("cls");
+	}
+	else {
+		cout << "User with this name doesn't create";
+		_getch();
+	}
+	system("cls");
+	return;
+}
+
+void show_users() {
+	ifstream file("User.txt");
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	Admin tmp;
+	while (file >> tmp) {
+		cout << tmp;
+	}
+	cout << "Enter any key...";
+	_getch();
+	return;
+}
+
+void delete_user() {
+	string login;
+	Admin tmp;
+	bool flag = 0;
+	cout << "Enter login:";
+	cin >> login;
+	vector <Admin> users;
+	{
+		ifstream file("User.txt");
+		if (!file) {
+			cout << "Error";
+			_getch();
+			exit(1);
+		}
+		while (file >> tmp) {
+			users.push_back(tmp);
+		}
+	}
+	for (int i = 0; i < users.size(); i++)
+		if (users[i] == login) {
+			flag = 1;
+			users.erase(users.begin()+i);
+		}
+	if (flag) {
+		ofstream file("User.txt");
+		if (!file) {
+			cout << "Error";
+			_getch();
+			exit(1);
+		}
+		for (auto i : users) {
+			file << i;
+		}
+		system("cls");
+	}
+	else {
+		cout << "User with this name doesn't create";
+		_getch();
+	}
+	system("cls");
 	return;
 }

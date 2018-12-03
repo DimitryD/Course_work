@@ -99,14 +99,15 @@ void Menu::menu_user_manage() {
 	do {
 		system("cls");
 		print_in_menu(1, "Add user");
-		print_in_menu(2, "Change user");
+		print_in_menu(2, "Edit user");
 		print_in_menu(3, "Delete user");
-		print_in_menu(4, "Exit");
+		print_in_menu(4, "Show users");
+		print_in_menu(5, "Exit");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
 			menu_pointer--;
-		if (c == 80 && menu_pointer < 4)
+		if (c == 80 && menu_pointer < 5)
 			menu_pointer++;
 		if (c == '\r') {
 			system("cls");
@@ -115,12 +116,15 @@ void Menu::menu_user_manage() {
 				add_user();
 				break;
 			case 2:
-
+				edit_user();
 				break;
 			case 3:
-
+				delete_user();
 				break;
 			case 4:
+				show_users();
+				break;
+			case 5:
 				menu_pointer = 1;
 				return;
 			}
