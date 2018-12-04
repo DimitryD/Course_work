@@ -1,29 +1,52 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Transport{
 
 protected:
 	static int number_of_machines;
-
-public:
-	char *type;
-	char *code;
-	int year;
-	char *model;
-	int capacity;
-	int consumption;
-	int distance;
 	static string validator_version;
+	string code;
+	int year;
+	string model;
+	int distance;
+	string route;
+public:
+	
 	Transport();
 	virtual ~Transport()=0;	
 };
 
-class autobus :protected Transport {
 
-public:
+class Electro {
+	int amperage;
+};
 
+
+class Fuel {
+	int fuel_capacity;
+	int consumption;
+};
+
+class Wheel {
+	int number_of_wheels;
+	int wheel_size;
+};
+
+class Rail {
+	
+};
+
+class Autobus : Transport, Fuel, Wheel {
 
 };
 
+class Tram : Transport, Electro, Rail {
+
+};
+
+class Trolleybus :Transport, Electro, Wheel {
+
+};

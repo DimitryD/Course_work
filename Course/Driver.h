@@ -10,7 +10,6 @@ class Driver{
 	int category;
 	int itinerary;
 	int salary;
-	//
 	string telephone_number;
 public:
 	Driver();

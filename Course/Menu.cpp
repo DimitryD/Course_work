@@ -43,7 +43,6 @@ void Menu::print_in_menu(int pointer, const char *str) {
 }
 
 void Menu::menu_user(int role) {
-
 	char c;
 	menu_pointer = 1;
 	do {
@@ -76,7 +75,7 @@ void Menu::menu_user(int role) {
 			case 1:
 				if (menu_pointer == ++k) menu_user_manage();
 			case 2:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_add_information(role);
 				if (menu_pointer == ++k);
 			case 3:
 				if (menu_pointer == ++k);
@@ -91,6 +90,7 @@ void Menu::menu_user(int role) {
 			}
 		}
 	} while (1);
+	return;
 }
 
 void Menu::menu_user_manage() {
@@ -130,4 +130,49 @@ void Menu::menu_user_manage() {
 			}
 		}
 	} while (1);
+}
+
+void Menu::menu_add_information(int role) {
+	char c;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+
+		case 1:
+			print_in_menu(++i, "Add driver");
+		case 2:
+			print_in_menu(++i, "Add trollebus");
+			print_in_menu(++i, "Add bus");
+			print_in_menu(++i, "Add trum");
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+				if (menu_pointer == ++k);
+			case 2:
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
+
+	return;
 }
