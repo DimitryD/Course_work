@@ -76,11 +76,11 @@ void Menu::menu_user(int role) {
 				if (menu_pointer == ++k) menu_user_manage();
 			case 2:
 				if (menu_pointer == ++k) menu_add_information(role);
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_delete_information(role);
 			case 3:
-				if (menu_pointer == ++k);
-				if (menu_pointer == ++k);
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_print_information(role);
+				if (menu_pointer == ++k) menu_sort_information(role);
+				if (menu_pointer == ++k) menu_filtr_information(role);
 			default:
 				if (menu_pointer == ++k) {
 					user.clear();
@@ -175,4 +175,187 @@ void Menu::menu_add_information(int role) {
 	} while (1);
 
 	return;
+}
+
+void Menu::menu_delete_information(int role) {
+	char c;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+
+		case 1:
+			print_in_menu(++i, "Delete driver");
+		case 2:
+			print_in_menu(++i, "Delete trollebus");
+			print_in_menu(++i, "Delete bus");
+			print_in_menu(++i, "Delete trum");
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+				if (menu_pointer == ++k);
+			case 2:
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
+
+	return;
+}
+
+void Menu::menu_sort_information(int role) {
+	char c;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+		case 1:
+		case 2:
+		case 3:
+			print_in_menu(++i, "Sort drivers");
+			print_in_menu(++i, "Sort trollebuses");
+			print_in_menu(++i, "Sort buses");
+			print_in_menu(++i, "Sort trums");
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+			case 2:
+			case 3:
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
+
+	return;
+}
+
+void Menu::menu_print_information(int role){
+	char c;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+		case 1:
+		case 2:
+		case 3:
+			print_in_menu(++i, "Print drivers");
+			print_in_menu(++i, "Print trollebuses");
+			print_in_menu(++i, "Print buses");
+			print_in_menu(++i, "Print trums");
+
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+			case 2:
+			case 3:
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
+
+	return;
+}
+
+void Menu::menu_filtr_information(int role) {
+	char c;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+		case 1:
+		case 2:
+		case 3:
+			print_in_menu(++i, "Filtr drivers");
+			print_in_menu(++i, "Filtr trollebuses");
+			print_in_menu(++i, "Filtr buses");
+			print_in_menu(++i, "Filtr trums");
+
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+			case 2:
+			case 3:
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
 }

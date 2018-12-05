@@ -36,7 +36,7 @@ class Wheel {
 };
 
 class Rail {
-	
+	string wheel_type;
 };
 
 class Autobus : Transport, Fuel, Wheel {

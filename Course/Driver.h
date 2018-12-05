@@ -7,12 +7,12 @@ class Driver{
 	string surname;
 	int age;
 	int experience;
-	int category;
-	int itinerary;
+	string category;
+	string itinerary;//route
 	int salary;
 	string telephone_number;
 public:
 	Driver();
-	virtual ~Driver()=0;
+	~Driver();
 };
 
