@@ -299,7 +299,7 @@ void Menu::menu_print_information(int role){
 			case 1:
 			case 2:
 			case 3:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) show_drivers();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);

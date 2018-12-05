@@ -189,3 +189,39 @@ void delete_user() {
 	system("cls");
 	return;
 }
+
+void show_transport() {
+
+	list <Tram> trams;
+	Tram tmp;
+	ifstream file("Trams.txt");
+	string buffer;
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	//while(file>>tmp);
+}
+
+void show_drivers() {
+	system("cls");
+	list <Driver> drivers;
+	Driver *tmp = new Driver;
+	ifstream file("Drivers.txt");
+	string buffer;
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+
+	while (file >> *tmp)
+		drivers.push_back(*tmp);
+	cout << setw(92) << setfill((char)196) << ' ' << endl;
+	for (auto i : drivers)
+		i.show();
+	cout << "Enter any key...";
+	_getch();
+}
+

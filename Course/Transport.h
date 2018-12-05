@@ -13,8 +13,9 @@ protected:
 	string model;
 	int distance;
 	string route;
+	string driver;
 public:
-	
+	bool readiness;
 	Transport();
 	virtual ~Transport()=0;	
 };
