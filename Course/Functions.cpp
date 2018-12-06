@@ -11,13 +11,17 @@ Admin authorization(string filename) {
 	}
 	for (int i = 0; i < 3; i++) {
 		user.authorization();
-		while (file >> tmp)
+		while (file >> tmp) {
 			if (tmp == user) {
 				tmp.authorized = true;
 				return tmp;
 			}
+		}
+		file.clear();
+		file.seekg(0);
 		cout << "Authorization error. Please, try again" << endl;
 	}
+	user.clear();
 	user.authorized = false;
 	return user;
 }
@@ -149,43 +153,17 @@ void show_users() {
 
 void delete_user() {
 	string login;
-	Admin tmp;
 	bool flag = 0;
 	cout << "Enter login:";
 	cin >> login;
-	vector <Admin> users;
-	{
-		ifstream file("User.txt");
-		if (!file) {
-			cout << "Error";
-			_getch();
-			exit(1);
-		}
-		while (file >> tmp) {
-			users.push_back(tmp);
-		}
+	list<Admin> users;
+	read_information_from_file(users, "User.txt");
+	users.remove_if([login](Admin user) { return user == login; });
+	for (auto user : users) {
+		cout << user;
 	}
-	for (int i = 0; i < users.size(); i++)
-		if (users[i] == login) {
-			flag = 1;
-			users.erase(users.begin()+i);
-		}
-	if (flag) {
-		ofstream file("User.txt");
-		if (!file) {
-			cout << "Error";
-			_getch();
-			exit(1);
-		}
-		for (auto i : users) {
-			file << i;
-		}
-		system("cls");
-	}
-	else {
-		cout << "User with this name doesn't create";
-		_getch();
-	}
+	_getch();
+	write_information_in_file(users, "User.txt");
 	system("cls");
 	return;
 }

@@ -1,12 +1,8 @@
 ﻿#include "Admin.h"
 
+Admin::Admin(){}
 
-Admin::Admin(){
-}
-
-
-Admin::~Admin(){
-}
+Admin::~Admin(){}
 
 void Admin::authorization() {
 	cout << "Enter login:";

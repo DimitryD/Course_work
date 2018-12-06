@@ -3,12 +3,11 @@
 #include <conio.h>
 #include "Functions.h"
 
+static Admin user;
+
 Menu::Menu():menu_pointer(1){}
 
 Menu::~Menu() {}
-
-
-static Admin user;
 
 void Menu::menu_authorization() {
 	menu_pointer = 1;
