@@ -252,7 +252,7 @@ void Menu::menu_sort_information(int role) {
 			case 1:
 			case 2:
 			case 3:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k)sort_drivers();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);

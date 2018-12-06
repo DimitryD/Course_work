@@ -225,3 +225,27 @@ void show_drivers() {
 	_getch();
 }
 
+void sort_drivers() {
+	system("cls");
+	list <Driver> drivers;
+	//Driver *tmp = new Driver;
+	//ifstream file("Drivers.txt");
+	//string buffer;
+	//if (!file) {
+	//	cout << "Error";
+	//	_getch();
+	//	exit(1);
+	//}
+
+	//while (file >> *tmp)
+	//	drivers.push_back(*tmp);
+	read_information_from_file(drivers, "Drivers.txt");
+	drivers.sort(Driver::comp_age);
+	//drivers.sort();
+	cout << setw(92) << setfill((char)196) << ' ' << endl;
+	for (auto i : drivers)
+		i.show();
+	write_information_int_file(drivers, "Drivers.txt");
+	cout << "Enter any key...";
+	_getch();
+}

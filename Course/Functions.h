@@ -39,3 +39,14 @@ void delete_user();
 void show_drivers();
 void show_users();
 void show_transport();
+
+
+//Sort functions
+void sort_drivers();
+
+
+
+//Filtr functions
+
+
+

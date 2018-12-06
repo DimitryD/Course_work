@@ -71,3 +71,31 @@ void enter_number(T & variable,int length){
 		return;
 	}
 }
+
+template <class T>
+void read_information_from_file(list<T> &list,string filename) {
+	T tmp;
+	ifstream file(filename);
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	while (file >> tmp) {
+		list.push_back(tmp);
+	}
+	return;
+}
+
+template <class T>
+void write_information_int_file(list<T> &list, string filename) {
+	ofstream file(filename);
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	for (auto tmp : list)
+		file << tmp;
+	return;
+}
