@@ -20,7 +20,7 @@ template <class T>
 void write_information_in_file(list<T> &list, string filename);
 
 template <class T>
-void show_information(list<T> &list);
+void show_information(T variable, string filename);
 
 template <class T>
 void delete_information(T variable , string filename,string what);
@@ -33,3 +33,6 @@ bool check_information(T check,string filename);
 
 template <class T>
 void edit_information(T variable, string filename, string what);
+
+template <class T>
+void sort_information(T variable, string filename, bool(*comparator)(const void *, const void *));

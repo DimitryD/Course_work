@@ -1,5 +1,4 @@
 #include "Menu.h"
-//#include "Stuff.cpp"
 #include <conio.h>
 #include "Functions.h"
 
@@ -271,6 +270,7 @@ void Menu::menu_sort_information(int role) {
 }
 
 void Menu::menu_print_information(int role){
+	Driver driver;
 	char c;
 	menu_pointer = 1;
 	do {
@@ -301,7 +301,7 @@ void Menu::menu_print_information(int role){
 			case 1:
 			case 2:
 			case 3:
-				if (menu_pointer == ++k) show_drivers();
+				if (menu_pointer == ++k) show_information(driver, "Drivers.txt");
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
@@ -365,6 +365,7 @@ void Menu::menu_filtr_information(int role) {
 void Menu::menu_sort_drivers() {
 	menu_pointer = 1;
 	char c;
+	Driver driver;
 	do {
 		system("cls");
 		print_in_menu(1, "Sort by name");
@@ -382,16 +383,16 @@ void Menu::menu_sort_drivers() {
 			system("cls");
 			switch (menu_pointer) {
 			case 1:
-				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_name));
+				sort_information(driver,"Drivers.txt",(bool(*)(const void *, const void *))(Driver::comp_name));
 				break;
 			case 2:
-				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_age));
+				sort_information(driver, "Drivers.txt", (bool(*)(const void *, const void *))(Driver::comp_age));
 				break;
 			case 3:
-				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_experience));
+				sort_information(driver, "Drivers.txt", (bool(*)(const void *, const void *))(Driver::comp_experience));
 				break;
 			case 4:
-				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_salary));
+				sort_information(driver, "Drivers.txt", (bool(*)(const void *, const void *))(Driver::comp_salary));
 				break;
 			case 5:
 				menu_pointer = 1;

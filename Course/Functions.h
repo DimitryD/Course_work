@@ -20,19 +20,9 @@ Admin authorization(string filename);
 string stars();
 string encryption(string &str,int key);
 
-//Edit functions
-void edit_user();
-
-
 
 //Show functions
-void show_drivers();
 void show_users();
-void show_transport();
-
-
-//Sort functions
-void sort_drivers(bool(*)(const void *, const void *));
 
 
 //Filtr functions

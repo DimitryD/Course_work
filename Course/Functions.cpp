@@ -54,31 +54,6 @@ string encryption(string &str,int key) {
 	return str;
 }
 
-void edit_user() {
-	Admin user;
-	string login;
-	bool flag = 0;
-	cout << "Enter login:";
-	cin >> login;
-	list <Admin> users;
-	read_information_from_file(users, "User.txt");
-	for (auto tmp : users)
-		if (tmp == login)
-			flag = 1;
-	if(flag){
-		users.remove_if([login](Admin obj) { return obj == login; });
-		user.create();
-		users.push_back(user);
-		write_information_in_file(users, "User.txt");
-	}
-	else {
-		cout << "User with this name doesn't create";
-	}
-	_getch();
-	system("cls");
-	return;
-}
-
 void show_users() {
 	ifstream file("User.txt");
 	if (!file) {
@@ -93,34 +68,4 @@ void show_users() {
 	cout << "Enter any key...";
 	_getch();
 	return;
-}
-
-void show_transport() {
-
-	list <Tram> trams;
-	Tram tmp;
-	ifstream file("Trams.txt");
-	string buffer;
-	if (!file) {
-		cout << "Error";
-		_getch();
-		exit(1);
-	}
-	//while(file>>tmp);
-}
-
-void show_drivers() {
-	system("cls");
-	list <Driver> drivers;
-	read_information_from_file(drivers, "Drivers.txt");
-	show_information(drivers);
-}
-
-void sort_drivers(bool(*comparator)(const void *, const void *)) {
-	system("cls");
-	list <Driver> drivers;
-	read_information_from_file(drivers, "Drivers.txt");
-	drivers.sort(comparator);
-	show_information(drivers);
-	write_information_in_file(drivers, "Drivers.txt");
 }

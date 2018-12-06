@@ -101,7 +101,10 @@ void write_information_in_file(list<T> &list, string filename) {
 }
 
 template <class T>
-void show_information(list<T> &list) {
+void show_information(T variable,string filename) {
+	system("cls");
+	list <T> list;
+	read_information_from_file(list, filename);
 	list.back().show_header();
 	for (auto tmp : list)
 		tmp.show();
@@ -183,4 +186,14 @@ void edit_information(T variable, string filename, string what) {
 	}
 	system("cls");
 	return;
+}
+
+template <class T>
+void sort_information(T variable,string filename, bool(*comparator)(const void *, const void *)) {
+	system("cls");
+	list <T> list;
+	read_information_from_file(list, filename);
+	list.sort(comparator);
+	write_information_in_file(list, filename);
+	show_information(list.back(), filename);
 }
