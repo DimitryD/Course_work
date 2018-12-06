@@ -156,3 +156,31 @@ bool check_information(T check,string filename) {
 	}
 	return false;
 }
+
+template <class T>
+void edit_information(T variable, string filename, string what) {
+	system("cls");
+	T new_inf;
+	string what_to_edit;
+	bool flag = 0;
+	cout << "Enter " << what << ':';
+	cin >> what_to_edit;
+	list <T> list;
+	read_information_from_file(list, filename);
+	for (auto tmp : list)
+		if (tmp == what_to_edit)
+			flag = 1;
+	system("cls");
+	if (flag) {
+		list.remove_if([what_to_edit](T obj) { return obj == what_to_edit; });
+		new_inf.create();
+		list.push_back(new_inf);
+		write_information_in_file(list, filename);
+	}
+	else {
+		cout << "Those information doesn't esist";
+		_getch();
+	}
+	system("cls");
+	return;
+}

@@ -30,3 +30,6 @@ void add_information(T variable, string filename);
 
 template <class T>
 bool check_information(T check,string filename);
+
+template <class T>
+void edit_information(T variable, string filename, string what);

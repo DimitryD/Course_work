@@ -55,47 +55,26 @@ string encryption(string &str,int key) {
 }
 
 void edit_user() {
-
+	Admin user;
 	string login;
-	Admin tmp;
 	bool flag = 0;
 	cout << "Enter login:";
 	cin >> login;
-	vector <Admin> users;
-	{
-		ifstream file("User.txt");
-		if (!file) {
-			cout << "Error";
-			_getch();
-			exit(1);
-		}
-		while (file >> tmp) {
-			users.push_back(tmp);
-		}
-	}
-	for (int i=0;i<users.size();i++)
-		if (users[i] == login) {
+	list <Admin> users;
+	read_information_from_file(users, "User.txt");
+	for (auto tmp : users)
+		if (tmp == login)
 			flag = 1;
-			users[i].clear();
-			users[i].create();
-			break;
-		}
 	if(flag){
-		ofstream file("User.txt");
-		if (!file) {
-			cout << "Error";
-			_getch();
-			exit(1);
-		}
-		for (auto i : users) {
-			file << i;
-		}
-		system("cls");
+		users.remove_if([login](Admin obj) { return obj == login; });
+		user.create();
+		users.push_back(user);
+		write_information_in_file(users, "User.txt");
 	}
 	else {
 		cout << "User with this name doesn't create";
-		_getch();
 	}
+	_getch();
 	system("cls");
 	return;
 }

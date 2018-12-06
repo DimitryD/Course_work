@@ -58,7 +58,7 @@ void Menu::menu_user(int role) {
 			print_in_menu(++i, "Print infirmation");
 			print_in_menu(++i, "Sort information");
 			print_in_menu(++i, "Filtr information");
-			
+			print_in_menu(++i, "Edit information");
 		default:
 			print_in_menu(++i, "Back");
 		}
@@ -80,6 +80,7 @@ void Menu::menu_user(int role) {
 				if (menu_pointer == ++k) menu_print_information(role);
 				if (menu_pointer == ++k) menu_sort_information(role);
 				if (menu_pointer == ++k) menu_filtr_information(role);
+				if (menu_pointer == ++k) menu_edit_information(role);
 			default:
 				if (menu_pointer == ++k) {
 					user.clear();
@@ -115,7 +116,7 @@ void Menu::menu_user_manage() {
 				add_information(user, "User.txt");
 				break;
 			case 2:
-				edit_user();
+				edit_information(user, "User.txt", "login");
 				break;
 			case 3:
 				delete_information(user, "User.txt", "login");
@@ -398,4 +399,50 @@ void Menu::menu_sort_drivers() {
 			}
 		}
 	} while (1);
+}
+
+void Menu::menu_edit_information(int role) {
+	char c;
+	Driver driver;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+
+		case 1:
+			print_in_menu(++i, "Edit driver");
+		case 2:
+			print_in_menu(++i, "Edit trollebus");
+			print_in_menu(++i, "Edit bus");
+			print_in_menu(++i, "Edit trum");
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+				if (menu_pointer == ++k) edit_information(driver, "Drivers.txt", "id");
+			case 2:
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+				if (menu_pointer == ++k);
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
+
+	return;
 }

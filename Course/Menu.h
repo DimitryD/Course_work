@@ -17,6 +17,7 @@ public:
 	void menu_user_manage();
 	void menu_sort_information(int role);
 	void menu_filtr_information(int role);
+	void menu_edit_information(int role);
 
 	//Adds
 	void menu_add_information(int role);

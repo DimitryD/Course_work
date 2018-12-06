@@ -35,7 +35,6 @@ void show_transport();
 void sort_drivers(bool(*)(const void *, const void *));
 
 
-
 //Filtr functions
 
 
