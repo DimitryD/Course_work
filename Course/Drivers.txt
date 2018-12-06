@@ -1,2 +1,2 @@
-Ariana Gorodeckaya Mikhailovna 18 1 B 45 250 +375177829441 x32
-Dmtitry Grishin Vasilievich 18 0 A 43 300 +375444734794 738
+0 Dmtitry Grishin Vasilievich 18 0 A 43 300 +375444734794 738
+1 Ariana Gorodeckaya Mikhailovna 18 1 B 45 250 +375177829441 x32

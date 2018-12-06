@@ -197,3 +197,32 @@ void sort_drivers(bool(*comparator)(const void *, const void *)) {
 	show_information(drivers);
 	write_information_in_file(drivers, "Drivers.txt");//    ????
 }
+
+void add_driver() {
+	system("cls");
+	Driver driver;
+	do {
+		driver.clear();
+		driver.create();
+	} while (check_driver_id(driver));
+	ofstream file("Drivers.txt", ofstream::app);
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	file << driver;
+}
+
+bool check_driver_id(Driver driver) {
+	list<Driver> drivers;
+	read_information_from_file(drivers, "Drivers.txt");
+	for (Driver tmp : drivers) {
+		if (driver == tmp) {
+			cout << "Id has been taken" << endl;
+			return true;
+		}
+	}
+	_getch();
+	return false;
+}

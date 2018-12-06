@@ -159,7 +159,7 @@ void Menu::menu_add_information(int role) {
 			int  k = 0;
 			switch (role) {
 			case 1:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) add_driver();
 			case 2:
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
