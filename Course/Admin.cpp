@@ -42,6 +42,7 @@ void Admin::create() {
 	cin >> position;
 	cout << "Enter access level:";
 	enter_number(role,1);
+	system("cls");
 }
 
 bool Admin::compare(Admin comp) {
@@ -66,9 +67,13 @@ ostream& operator <<(ostream& out, Admin &user) {
 		<< user.position << endl;
 }
 
+bool operator!=(const Admin &firstUser, const Admin &secondUser) {
+	return firstUser.login != secondUser.login ||
+		firstUser.password != secondUser.password;
+}
+
 bool operator==(const Admin &firstUser, const Admin &secondUser) {
-	return firstUser.login == secondUser.login &&
-		firstUser.password == secondUser.password;
+	return firstUser.login == secondUser.login;
 }
 
 bool operator==(const Admin &user, string log) {

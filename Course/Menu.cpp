@@ -112,13 +112,13 @@ void Menu::menu_user_manage() {
 			system("cls");
 			switch (menu_pointer) {
 			case 1:
-				add_user();
+				add_information(user, "User.txt");
 				break;
 			case 2:
 				edit_user();
 				break;
 			case 3:
-				delete_user();
+				delete_information(user, "User.txt", "login");
 				break;
 			case 4:
 				show_users();
@@ -132,6 +132,7 @@ void Menu::menu_user_manage() {
 }
 
 void Menu::menu_add_information(int role) {
+	Driver driver;
 	char c;
 	menu_pointer = 1;
 	do {
@@ -144,7 +145,7 @@ void Menu::menu_add_information(int role) {
 		case 2:
 			print_in_menu(++i, "Add trollebus");
 			print_in_menu(++i, "Add bus");
-			print_in_menu(++i, "Add trum");
+			print_in_menu(++i, "Add tram");
 
 		default:
 			print_in_menu(++i, "Back");
@@ -159,7 +160,7 @@ void Menu::menu_add_information(int role) {
 			int  k = 0;
 			switch (role) {
 			case 1:
-				if (menu_pointer == ++k) add_driver();
+				if (menu_pointer == ++k) add_information(driver, "Drivers.txt");
 			case 2:
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
@@ -178,6 +179,7 @@ void Menu::menu_add_information(int role) {
 
 void Menu::menu_delete_information(int role) {
 	char c;
+	Driver driver;
 	menu_pointer = 1;
 	do {
 		int i = 0;
@@ -204,7 +206,7 @@ void Menu::menu_delete_information(int role) {
 			int  k = 0;
 			switch (role) {
 			case 1:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) delete_information(driver, "Drivers.txt", "id");
 			case 2:
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);

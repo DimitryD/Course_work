@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <conio.h>
 #include <list>
 #include <Windows.h>
@@ -20,3 +21,12 @@ void write_information_in_file(list<T> &list, string filename);
 
 template <class T>
 void show_information(list<T> &list);
+
+template <class T>
+void delete_information(T variable , string filename,string what);
+
+template <class T>
+void add_information(T variable, string filename);
+
+template <class T>
+bool check_information(T check,string filename);

@@ -83,7 +83,7 @@ void Driver::create() {
 	cin >> category;
 	cout << "Enter itinerary:";
 	cin >> itinerary;
-	cout << "Enter salary";
+	cout << "Enter salary:";
 	enter_number(salary, 5);
 	cout << "Enter telephone number:";
 	cin >> telephone_number;
@@ -131,4 +131,8 @@ Driver::operator const void*() {
 
 bool operator==(Driver driver1, Driver driver2) {
 	return driver1.id == driver2.id;
+}
+
+bool operator==(Driver driver, string id) {
+	return !id.compare(to_string(driver.id));
 }

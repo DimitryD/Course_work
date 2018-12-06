@@ -12,7 +12,7 @@ Admin authorization(string filename) {
 	for (int i = 0; i < 3; i++) {
 		user.authorization();
 		while (file >> tmp) {
-			if (tmp == user) {
+			if (!(tmp != user)) {
 				tmp.authorized = true;
 				return tmp;
 			}
@@ -52,41 +52,6 @@ string encryption(string &str,int key) {
 	for (int i = 1; i < str.length(); i++)
 		str[i] += key;
 	return str;
-}
-
-void add_user() {
-
-	Admin user;
-	do {
-		user.clear();
-		user.create();
-		system("cls");
-	} while (check_uniq_login(user));
-	ofstream file("User.txt", ofstream::app);
-	if (!file) {
-		cout << "Error";
-		_getch();
-		exit(1);
-	}
-	file << user;
-	return;
-}
-
-bool check_uniq_login(Admin user) {
-	Admin tmp;
-	ifstream file("User.txt");
-	if (!file) {
-		cout << "Error";
-		_getch();
-		exit(1);
-	}
-	while (file >> tmp) {
-		if (!user.compare(tmp)) {
-			cout << "Login has been taken" << endl;
-			return true;
-		}
-	}
-	return false;
 }
 
 void edit_user() {
@@ -151,23 +116,6 @@ void show_users() {
 	return;
 }
 
-void delete_user() {
-	string login;
-	bool flag = 0;
-	cout << "Enter login:";
-	cin >> login;
-	list<Admin> users;
-	read_information_from_file(users, "User.txt");
-	users.remove_if([login](Admin user) { return user == login; });
-	for (auto user : users) {
-		cout << user;
-	}
-	_getch();
-	write_information_in_file(users, "User.txt");
-	system("cls");
-	return;
-}
-
 void show_transport() {
 
 	list <Tram> trams;
@@ -195,34 +143,5 @@ void sort_drivers(bool(*comparator)(const void *, const void *)) {
 	read_information_from_file(drivers, "Drivers.txt");
 	drivers.sort(comparator);
 	show_information(drivers);
-	write_information_in_file(drivers, "Drivers.txt");//    ????
-}
-
-void add_driver() {
-	system("cls");
-	Driver driver;
-	do {
-		driver.clear();
-		driver.create();
-	} while (check_driver_id(driver));
-	ofstream file("Drivers.txt", ofstream::app);
-	if (!file) {
-		cout << "Error";
-		_getch();
-		exit(1);
-	}
-	file << driver;
-}
-
-bool check_driver_id(Driver driver) {
-	list<Driver> drivers;
-	read_information_from_file(drivers, "Drivers.txt");
-	for (Driver tmp : drivers) {
-		if (driver == tmp) {
-			cout << "Id has been taken" << endl;
-			return true;
-		}
-	}
-	_getch();
-	return false;
+	write_information_in_file(drivers, "Drivers.txt");
 }

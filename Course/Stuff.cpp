@@ -108,3 +108,51 @@ void show_information(list<T> &list) {
 	cout << "Enter any key...";
 	_getch();
 }
+
+template <class T>
+void delete_information(T variable, string filename, string what) {
+	system("cls");
+
+	string what_delete;
+	cout << "Enter ";
+	cout << what;
+	cout << ':';
+	cin >> what_delete;
+	list<T> list;
+	read_information_from_file(list, filename);
+	list.remove_if([what_delete](T obj) { return obj == what_delete; });
+	write_information_in_file(list, filename);
+	system("cls");
+	return;
+}
+
+template <class T>
+void add_information(T variable, string filename) {
+	system("cls");
+	T tmp;
+	do {
+		tmp.clear();
+		tmp.create();
+	} while (check_information(tmp,filename));
+	ofstream file(filename, ofstream::app);
+	if (!file) {
+		cout << "Error";
+		_getch();
+		exit(1);
+	}
+	file <<tmp;
+	return;
+}
+
+template <class T>
+bool check_information(T check,string filename) {
+	list<T> list;
+	read_information_from_file(list, filename);
+	for (T tmp : list) {
+		if (check == tmp) {
+			cout << "Something has been taken" << endl;
+			return true;
+		}
+	}
+	return false;
+}

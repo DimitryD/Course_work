@@ -28,6 +28,7 @@ public:
 	friend istream& operator >>(istream& in, Admin &user);
 	friend ostream& operator <<(ostream& out, Admin &user);
 	friend bool operator==(const Admin &firstUser, const Admin &secondUser);
+	friend bool operator!=(const Admin &firstUser, const Admin &secondUser);
 	friend bool operator==(const Admin &user,string login);
 	operator bool();
 	operator int();
