@@ -102,7 +102,7 @@ void Menu::menu_user_manage() {
 		print_in_menu(2, "Edit user");
 		print_in_menu(3, "Delete user");
 		print_in_menu(4, "Show users");
-		print_in_menu(5, "Exit");
+		print_in_menu(5, "Back");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -252,7 +252,7 @@ void Menu::menu_sort_information(int role) {
 			case 1:
 			case 2:
 			case 3:
-				if (menu_pointer == ++k)sort_drivers();
+				if (menu_pointer == ++k) menu_sort_drivers();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
@@ -355,6 +355,45 @@ void Menu::menu_filtr_information(int role) {
 					menu_pointer = 1;
 					return;
 				}
+			}
+		}
+	} while (1);
+}
+
+void Menu::menu_sort_drivers() {
+	menu_pointer = 1;
+	char c;
+	do {
+		system("cls");
+		print_in_menu(1, "Sort by name");
+		print_in_menu(2, "Sort by age");
+		print_in_menu(3, "Sort by experience");
+		print_in_menu(4, "Sort by salary");
+		print_in_menu(5, "Back");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 5)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_name));
+				break;
+			case 2:
+				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_age));
+				break;
+			case 3:
+				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_experience));
+				break;
+			case 4:
+				sort_drivers((bool(*)(const void *, const void *))(Driver::comp_salary));
+				break;
+			case 5:
+				menu_pointer = 1;
+				return;
 			}
 		}
 	} while (1);

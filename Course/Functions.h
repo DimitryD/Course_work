@@ -42,7 +42,7 @@ void show_transport();
 
 
 //Sort functions
-void sort_drivers();
+void sort_drivers(bool(*)(const void *, const void *));
 
 
 

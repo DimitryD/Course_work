@@ -16,4 +16,7 @@ template <class T>
 void read_information_from_file(list<T> &list,string filename);
 
 template <class T>
-void write_information_int_file(list<T> &list, string filename);
+void write_information_in_file(list<T> &list, string filename);
+
+template <class T>
+void show_information(list<T> &list);

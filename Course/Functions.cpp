@@ -207,45 +207,15 @@ void show_transport() {
 void show_drivers() {
 	system("cls");
 	list <Driver> drivers;
-	Driver *tmp = new Driver;
-	ifstream file("Drivers.txt");
-	string buffer;
-	if (!file) {
-		cout << "Error";
-		_getch();
-		exit(1);
-	}
-
-	while (file >> *tmp)
-		drivers.push_back(*tmp);
-	cout << setw(92) << setfill((char)196) << ' ' << endl;
-	for (auto i : drivers)
-		i.show();
-	cout << "Enter any key...";
-	_getch();
+	read_information_from_file(drivers, "Drivers.txt");
+	show_information(drivers);
 }
 
-void sort_drivers() {
+void sort_drivers(bool(*comparator)(const void *, const void *)) {
 	system("cls");
 	list <Driver> drivers;
-	//Driver *tmp = new Driver;
-	//ifstream file("Drivers.txt");
-	//string buffer;
-	//if (!file) {
-	//	cout << "Error";
-	//	_getch();
-	//	exit(1);
-	//}
-
-	//while (file >> *tmp)
-	//	drivers.push_back(*tmp);
 	read_information_from_file(drivers, "Drivers.txt");
-	drivers.sort(Driver::comp_age);
-	//drivers.sort();
-	cout << setw(92) << setfill((char)196) << ' ' << endl;
-	for (auto i : drivers)
-		i.show();
-	write_information_int_file(drivers, "Drivers.txt");
-	cout << "Enter any key...";
-	_getch();
+	drivers.sort(comparator);
+	show_information(drivers);
+	write_information_in_file(drivers, "Drivers.txt");//    ????
 }
