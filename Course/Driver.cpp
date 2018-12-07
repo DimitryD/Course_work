@@ -125,6 +125,57 @@ bool Driver::comp_salary(Driver &driver1, Driver &driver2) {
 	return driver1.salary > driver2.salary ? 1 : 0;
 }
 
+void Driver::filtr_age(Driver &driver, string first, string second) {
+	try {
+		if (driver.age >= stoi(first) && driver.age <= stoi(second))
+			driver.show();
+	}
+	catch (...) {
+		//cout << "Bad parametr" << endl;
+	}
+
+}
+
+void Driver::filtr_experience(Driver &driver, string first, string second) {
+	try {
+		if (driver.experience >= stoi(first) && driver.experience <= stoi(second))
+			driver.show();
+	}
+	catch (...) {
+		
+	}
+}
+
+void Driver::filtr_salary(Driver &driver, string first, string second) {
+	try {
+		if (driver.salary >= stoi(first) && driver.salary <= stoi(second))
+			driver.show();
+	}
+	catch (...) {
+		
+	}
+}
+
+void Driver::search_surname(Driver &driver, string word) {
+	if (!driver.surname.compare(word))
+		driver.show();
+}
+
+void Driver::search_category(Driver &driver, string word) {
+	if (driver.category.find(word, 0))
+		driver.show();
+}
+
+void Driver::search_itinerary(Driver &driver, string word) {
+	if (!driver.itinerary.compare(word))
+		driver.show();
+}
+
+void Driver::search_transport_code(Driver &driver, string word) {
+	if (!driver.transport_code.compare(word))
+		driver.show();
+}
+
 Driver::operator const void*() { 
 	return reinterpret_cast<const void*>(this); 
 }

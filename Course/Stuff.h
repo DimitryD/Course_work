@@ -4,6 +4,7 @@
 #include <string>
 #include <conio.h>
 #include <list>
+#include <algorithm>
 #include <Windows.h>
 using namespace std;
 
@@ -36,3 +37,9 @@ void edit_information(T variable, string filename, string what);
 
 template <class T>
 void sort_information(T variable, string filename, bool(*comparator)(const void *, const void *));
+
+template <class T>
+void filtr_information(T variable, string filename, void(*filtrator)(const void *,string,string));
+
+template <class T>
+void search_information(T variable, string filename, void(*searcher)(const void*, string));

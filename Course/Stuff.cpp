@@ -8,8 +8,8 @@ ostream& color(ostream &text) {
 }
 
 template <typename T>
-void enter_number(T & variable,int length){
-	if (strcmp(typeid(variable).name(), "int") == 0){
+void enter_number(T & variable, int length) {
+	if (strcmp(typeid(variable).name(), "int") == 0) {
 		char c, mas[10];
 		int i = 0;
 		while (1) {
@@ -22,7 +22,7 @@ void enter_number(T & variable,int length){
 				cout << c;
 			}
 			else if (c == '\b' && i != 0) {
-				cout<<"\b \b";
+				cout << "\b \b";
 				i--;
 			}
 			else if (c == '\r' && i != 0)
@@ -66,14 +66,14 @@ void enter_number(T & variable,int length){
 		mas[i] = '\0';
 		variable = atof(mas);
 		puts("\r");
-		cout << "\n"<< variable << endl;
+		cout << "\n" << variable << endl;
 		system("pause");
 		return;
 	}
 }
 
 template <class T>
-void read_information_from_file(list<T> &list,string filename) {
+void read_information_from_file(list<T> &list, string filename) {
 	T tmp;
 	ifstream file(filename);
 	if (!file) {
@@ -101,7 +101,7 @@ void write_information_in_file(list<T> &list, string filename) {
 }
 
 template <class T>
-void show_information(T variable,string filename) {
+void show_information(T variable, string filename) {
 	system("cls");
 	list <T> list;
 	read_information_from_file(list, filename);
@@ -115,7 +115,6 @@ void show_information(T variable,string filename) {
 template <class T>
 void delete_information(T variable, string filename, string what) {
 	system("cls");
-
 	string what_delete;
 	cout << "Enter ";
 	cout << what;
@@ -136,19 +135,19 @@ void add_information(T variable, string filename) {
 	do {
 		tmp.clear();
 		tmp.create();
-	} while (check_information(tmp,filename));
+	} while (check_information(tmp, filename));
 	ofstream file(filename, ofstream::app);
 	if (!file) {
 		cout << "Error";
 		_getch();
 		exit(1);
 	}
-	file <<tmp;
+	file << tmp;
 	return;
 }
 
 template <class T>
-bool check_information(T check,string filename) {
+bool check_information(T check, string filename) {
 	list<T> list;
 	read_information_from_file(list, filename);
 	for (T tmp : list) {
@@ -189,11 +188,45 @@ void edit_information(T variable, string filename, string what) {
 }
 
 template <class T>
-void sort_information(T variable,string filename, bool(*comparator)(const void *, const void *)) {
+void sort_information(T variable, string filename, bool(*comparator)(const void *, const void *)) {
 	system("cls");
 	list <T> list;
 	read_information_from_file(list, filename);
 	list.sort(comparator);
 	write_information_in_file(list, filename);
 	show_information(list.back(), filename);
+}
+
+template <class T>
+void filtr_information(T variable,string filename, void(*filtrator)(const void *,string,string)) {
+	system("cls");
+	list<T> list;
+	string first, second;
+	read_information_from_file(list, filename);
+	cout << "Enter first:";
+	cin >> first;
+	cout << "Enter second:";
+	cin >> second;
+	system("cls");
+	T::show_header();
+	for_each(list.begin(), list.end(), [first, second, filtrator](T tmp) {filtrator(tmp, first, second); });
+	cout << "Enter any key...";
+	_getch();
+	return;
+}
+
+template <class T>
+void search_information(T variable, string filename, void(*searcher)(const void*, string)) {
+	system("cls");
+	list<T> list;
+	string word;
+	read_information_from_file(list, filename);
+	cout << "Enter first:";
+	cin >> word;
+	system("cls");
+	T::show_header();
+	for_each(list.begin(), list.end(), [word, searcher](T tmp) {searcher(tmp, word); });
+	cout << "Enter any key...";
+	_getch();
+	return;
 }

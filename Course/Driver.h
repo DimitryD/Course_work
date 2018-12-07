@@ -28,9 +28,16 @@ public:
 	static bool comp_age(Driver &driver1, Driver &driver2);
 	static bool comp_experience(Driver &driver1, Driver &driver2);
 	static bool comp_salary(Driver &driver1, Driver &driver2);
+	static void filtr_age(Driver &driver, string first, string second);
+	static void filtr_experience(Driver &driver, string first, string second);
+	static void filtr_salary(Driver &driver, string first, string second);
+	static void search_surname(Driver &driver, string word);
+	static void search_category(Driver &driver, string word);
+	static void search_itinerary(Driver &driver, string word);
+	static void search_transport_code(Driver &driver, string word);
 	operator const void*();
 	void show();
-	void show_header();
+	static void show_header();
 	void create();
 	void clear();
 };

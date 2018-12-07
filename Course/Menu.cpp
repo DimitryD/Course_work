@@ -58,6 +58,7 @@ void Menu::menu_user(int role) {
 			print_in_menu(++i, "Sort information");
 			print_in_menu(++i, "Filtr information");
 			print_in_menu(++i, "Edit information");
+			print_in_menu(++i, "Search infromation");
 		default:
 			print_in_menu(++i, "Back");
 		}
@@ -80,6 +81,7 @@ void Menu::menu_user(int role) {
 				if (menu_pointer == ++k) menu_sort_information(role);
 				if (menu_pointer == ++k) menu_filtr_information(role);
 				if (menu_pointer == ++k) menu_edit_information(role);
+				if (menu_pointer == ++k) menu_search_information(role);
 			default:
 				if (menu_pointer == ++k) {
 					user.clear();
@@ -271,6 +273,9 @@ void Menu::menu_sort_information(int role) {
 
 void Menu::menu_print_information(int role){
 	Driver driver;
+	Trolleybus trolleybus;
+	Autobus bus;
+	Tram tram;
 	char c;
 	menu_pointer = 1;
 	do {
@@ -302,6 +307,53 @@ void Menu::menu_print_information(int role){
 			case 2:
 			case 3:
 				if (menu_pointer == ++k) show_information(driver, "Drivers.txt");
+				if (menu_pointer == ++k);// show_information(trolleybus, "Trollebuses.txt");
+				if (menu_pointer == ++k);// show_information(bus, "Buses.txt");
+				if (menu_pointer == ++k);// show_information(tram, "Trams.txt");
+			default:
+				if (menu_pointer == ++k) {
+					menu_pointer = 1;
+					return;
+				}
+			}
+		}
+	} while (1);
+
+	return;
+}
+
+void Menu::menu_search_information(int role) {
+	Driver driver;
+	char c;
+	menu_pointer = 1;
+	do {
+		int i = 0;
+		system("cls");
+		switch (role) {
+		case 1:
+		case 2:
+		case 3:
+			print_in_menu(++i, "Search driver");
+			print_in_menu(++i, "Search trollebus");
+			print_in_menu(++i, "Search bus");
+			print_in_menu(++i, "Search tram");
+
+		default:
+			print_in_menu(++i, "Back");
+		}
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < i)
+			menu_pointer++;
+		if (c == '\r') {
+			int  k = 0;
+			switch (role) {
+			case 1:
+			case 2:
+			case 3:
+				if (menu_pointer == ++k) menu_search_drivers();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
@@ -319,7 +371,7 @@ void Menu::menu_print_information(int role){
 
 void Menu::menu_filtr_information(int role) {
 	char c;
-	menu_pointer = 1;
+	menu_pointer = 1;;
 	do {
 		int i = 0;
 		system("cls");
@@ -331,7 +383,6 @@ void Menu::menu_filtr_information(int role) {
 			print_in_menu(++i, "Filtr trollebuses");
 			print_in_menu(++i, "Filtr buses");
 			print_in_menu(++i, "Filtr trums");
-
 
 		default:
 			print_in_menu(++i, "Back");
@@ -348,7 +399,7 @@ void Menu::menu_filtr_information(int role) {
 			case 1:
 			case 2:
 			case 3:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_filtr_drivers();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k);
@@ -445,5 +496,83 @@ void Menu::menu_edit_information(int role) {
 		}
 	} while (1);
 
+	return;
+}
+
+void Menu::menu_filtr_drivers() {
+	menu_pointer = 1;
+	char c;
+	Driver driver;
+	do {
+		system("cls");
+		print_in_menu(1, "Filtr by age");
+		print_in_menu(2, "Filtr by experience");
+		print_in_menu(3, "Filtr by salary");
+		print_in_menu(4, "Back");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 4)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				filtr_information(driver, "Drivers.txt", (void(*)(const void *, string, string))(Driver::filtr_age));
+				break;
+			case 2:
+				filtr_information(driver, "Drivers.txt", (void(*)(const void *, string, string))(Driver::filtr_experience));
+				break;
+			case 3:
+				filtr_information(driver, "Drivers.txt", (void(*)(const void *, string, string))(Driver::filtr_salary));
+				break;
+			case 4:
+				menu_pointer = 1;
+				return;
+			}
+		}
+	} while (1);
+	return;
+}
+
+void Menu::menu_search_drivers() {
+	menu_pointer = 1;
+	char c;
+	Driver driver;
+	do {
+		system("cls");
+		print_in_menu(1, "Search by surname");
+		print_in_menu(2, "Search by category");
+		print_in_menu(3, "Search by itinerary");
+		print_in_menu(4, "Search by transport code");
+		print_in_menu(5, "Back");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 5)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				search_information(driver, "Drivers.txt", (void(*)(const void *, string))Driver::search_surname);
+				break;
+			case 2:
+				search_information(driver, "Drivers.txt", (void(*)(const void *, string))Driver::search_category);
+				break;
+			case 3:
+				search_information(driver, "Drivers.txt", (void(*)(const void *, string))Driver::search_itinerary);
+				break;
+			case 4:
+				search_information(driver, "Drivers.txt", (void(*)(const void *, string))Driver::search_transport_code);
+				break;
+			case 5:
+				menu_pointer = 1;
+				return;
+			}
+		}
+	} while (1);
 	return;
 }
