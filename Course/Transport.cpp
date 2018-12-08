@@ -111,6 +111,8 @@ Electro::operator const void*() { return reinterpret_cast<const void*>(this); }
 
 Trolleybus::operator const void*() { return reinterpret_cast<const void*>(this); }
 
+Autobus::operator const void*() { return reinterpret_cast<const void*>(this); }
+
 Wheel::operator const void*() { return reinterpret_cast<const void*>(this); }
 
 void Electro::electro_create() {
@@ -146,14 +148,6 @@ void Fuel::fuel_clear() {
 	consumption = 0;
 }
 
-istream& operator >>(istream& in, Autobus &bus) {
-	return in;
-}
-
-ostream& operator <<(ostream& out, Autobus &bus) {
-	return out;
-}
-
 void Electro::filtr_amperage(Tram &tram, string first, string second) {
 	try {
 		//cout << electro;
@@ -185,6 +179,59 @@ void Wheel::filtr_number(Trolleybus &trolleybus, string first, string second) {
 		//cout << electro;
 		if (trolleybus.number_of_wheels >= stoi(first) && trolleybus.number_of_wheels <= stoi(second))
 			trolleybus.show();
+	}
+	catch (...) {
+
+	}
+}
+
+void Fuel::filtr_capacity(Autobus &bus, string first, string second) {
+	try {
+		//cout << electro;
+		if (bus.fuel_capacity >= stoi(first) && bus.fuel_capacity <= stoi(second))
+			bus.show();
+	}
+	catch (...) {
+
+	}
+}
+
+void Fuel::filtr_consumption(Autobus &bus, string first, string second) {
+	try {
+		//cout << electro;
+		if (bus.consumption >= stoi(first) && bus.consumption <= stoi(second))
+			bus.show();
+	}
+	catch (...) {
+
+	}
+}
+
+bool Fuel::comp_capacity(Autobus &bus1, Autobus &bus2) {
+	return bus1.fuel_capacity > bus2.fuel_capacity ? 1 : 0;
+}
+
+bool Fuel::comp_consumption(Autobus &bus1, Autobus &bus2) {
+	return bus1.consumption > bus2.consumption ? 1 : 0;
+
+}
+
+void Wheel::filtr_size_bus(Autobus &bus, string first, string second) {
+	try {
+		//cout << electro;
+		if (bus.wheel_size >= stoi(first) && bus.wheel_size <= stoi(second))
+			bus.show();
+	}
+	catch (...) {
+
+	}
+}
+
+void Wheel::filtr_number_bus(Autobus &bus, string first, string second) {
+	try {
+		//cout << electro;
+		if (bus.number_of_wheels >= stoi(first) && bus.number_of_wheels <= stoi(second))
+			bus.show();
 	}
 	catch (...) {
 

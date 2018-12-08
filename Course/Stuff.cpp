@@ -1,6 +1,6 @@
 #include "Stuff.h"
 
-template<int txt = 7, int bg = 0>
+template<int txt, int bg>
 ostream& color(ostream &text) {
 	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hStdOut, (WORD)((bg << 4) | txt));

@@ -34,5 +34,9 @@ public:
 	void menu_filtr_trolleybuses();
 	void menu_sort_trolleybuses();
 	void menu_search_trolleybuses();
+
+	void menu_filtr_buses();
+	void menu_sort_buses();
+	void menu_search_buses();
 };
 

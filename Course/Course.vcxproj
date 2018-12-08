@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Buses.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="Menu.cpp" />
