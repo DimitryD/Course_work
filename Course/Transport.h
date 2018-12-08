@@ -90,6 +90,7 @@ public:
 };
 
 class Autobus : Transport, public Fuel,public  Wheel {
+	bool rent;
 public:
 	friend istream& operator >>(istream& in, Autobus &bus);
 	friend ostream& operator <<(ostream& out, Autobus &bus);
@@ -100,6 +101,8 @@ public:
 	void show();
 	void clear();
 	void create();
+	bool check_rent();
+	void set_rent();
 };
 
 class Tram :Transport, public Electro, Rail {

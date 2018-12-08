@@ -10,9 +10,10 @@ istream& operator >>(istream& in, Autobus &bus) {
 		>> bus.distance
 		>> bus.route
 		>> bus.fuel_capacity
-		>>bus.consumption
+		>> bus.consumption
 		>> bus.number_of_wheels
-		>> bus.wheel_size;
+		>> bus.wheel_size
+		>> bus.rent;
 }
 
 ostream& operator <<(ostream& out, Autobus &bus) {
@@ -27,11 +28,12 @@ ostream& operator <<(ostream& out, Autobus &bus) {
 		<< bus.consumption << ' '
 		<< bus.number_of_wheels << ' '
 		<< bus.number_of_wheels << ' '
-		<< bus.wheel_size << endl;
+		<< bus.wheel_size << ' '
+		<< bus.rent << endl;
 }
 
 void Autobus::show_header() {
-	cout << setw(162) << setfill((char)196) << ' ' << endl;
+	cout << setw(173) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
 		<< setw(8) << "code" << '|'
 		<< setw(20) << "Surname" << '|'
@@ -44,8 +46,9 @@ void Autobus::show_header() {
 		<< setw(15) << "fuel capacity" << '|'
 		<< setw(13) << "consumption" << "|"
 		<< setw(8) << "wheels" << '|'
-		<< setw(12) << "wheel size" << '|' << endl;
-	cout << setw(162) << setfill((char)196) << ' ' << endl;
+		<< setw(12) << "wheel size" << '|'
+		<< setw(10) << "Rent" << '|' << endl;
+	cout << setw(173) << setfill((char)196) << ' ' << endl;
 }
 
 void Autobus::show() {
@@ -61,21 +64,33 @@ void Autobus::show() {
 		<< setw(15) << fuel_capacity << '|'
 		<< setw(13) << consumption << '|'
 		<< setw(8) << number_of_wheels << '|'
-		<< setw(12) << wheel_size << '|' << endl;
-	cout << setw(162) << setfill((char)196) << ' ' << endl;
+		<< setw(12) << wheel_size << '|' 
+		<< setw(10) << (rent ? "Rented" : "Free") << '|' << endl;
+	cout << setw(173) << setfill((char)196) << ' ' << endl;
 }
 
 void Autobus::clear() {
 	base_clear();
 	wheel_clear();
 	fuel_clear();
+	rent = 0;
 }
 
 void Autobus::create() {
 	base_create();
 	fuel_create();
 	wheel_create();
+	cout << "Enter rent:";
+	enter_bool(rent);
 	system("cls");
+}
+
+bool Autobus::check_rent() {
+	return rent;
+}
+
+void Autobus::set_rent() {
+	rent = 1;
 }
 
 bool operator==(Autobus trolleybus1, Autobus trolleybus2) { return trolleybus1.code == trolleybus2.code; }

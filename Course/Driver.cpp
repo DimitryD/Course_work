@@ -93,6 +93,8 @@ void Driver::create() {
 	cin >> telephone_number;
 	cout << "Enter transport code:";
 	cin >> transport_code;
+	cout << "Rent:";
+	enter_bool(rent);
 	system("cls");
 	return;
 }
@@ -109,7 +111,7 @@ void Driver::clear() {
 	telephone_number.clear();
 	transport_code.clear();
 	id = -1;
-
+	rent = 0;
 
 }
 

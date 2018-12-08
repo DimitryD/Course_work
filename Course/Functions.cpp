@@ -79,7 +79,32 @@ void enter_bool(bool &var) {
 }
 
 void rent_bus() {
-
+	system("cls");
+	list<Autobus> buses;
+	read_information_from_file(buses, "Buses.txt");
+	string id;
+	bool flag = 1;
+	cout << "Enter code:";
+	cin >> id;
+	find_if(buses.begin(), buses.end(), [id, &flag](Autobus &tmp) {
+		if (tmp == id) {
+			if (tmp.check_rent())
+				return false;
+			tmp.set_rent();
+			flag = 0;
+			cout << "Rented tommorow" << endl;
+			_getch();
+			return true;
+		}
+		return false;
+	});
+	if (flag) {
+		cout << "Can not be rent" << endl;
+		_getch();
+	}
+	else {
+		write_information_in_file(buses, "Buses.txt");
+	}
 
 }
 
