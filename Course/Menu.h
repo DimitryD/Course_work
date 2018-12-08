@@ -30,5 +30,9 @@ public:
 	void menu_filtr_trams();
 	void menu_sort_trams();
 	void menu_search_trams();
+
+	void menu_filtr_trolleybuses();
+	void menu_sort_trolleybuses();
+	void menu_search_trolleybuses();
 };
 

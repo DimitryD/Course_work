@@ -1,0 +1,3 @@
+21 Grishin Dmitry Vasilievich 21 1990 1 43 320 6 12
+123 Vasya Petr Grisha t34 1992 12022 17x 220 8 18
+2 b b b 34 2000 10000 b 50 14 10

@@ -7,6 +7,7 @@ using namespace std;
 
 
 class Tram;
+class Trolleybus;
 class Transport{
 protected:
 	//static string validator_version;
@@ -44,8 +45,8 @@ protected:
 	int amperage;
 public:
 	Electro();
-	virtual void show() = 0;
 	void electro_create();
+	void electro_clear();
 	static void filtr_amperage(Tram &tram, string first, string second);
 	static bool comp_amperage(Tram &tram1, Tram &tram2);
 	operator const void*();
@@ -57,12 +58,21 @@ class Fuel {
 protected:
 	int fuel_capacity;
 	int consumption;
+public:
+	void fuel_create();
+	void fuel_clear();
 };
 
 class Wheel {
 protected:
 	int number_of_wheels;
 	int wheel_size;
+public:
+	void wheel_create();
+	void wheel_clear();
+	static void filtr_size(Trolleybus &trolleybus, string first, string second);
+	static void filtr_number(Trolleybus &trolleybus, string first, string second);
+	operator const void*();
 };
 
 class Rail {
@@ -94,10 +104,15 @@ public:
 };
 
 
-class Trolleybus :Transport, Electro, Wheel {
+class Trolleybus :Transport, Electro,public Wheel {
 public:
-	static void show_header() {}
-	void show() {}
 	friend istream& operator >>(istream& in, Trolleybus &trolleybus);
 	friend ostream& operator <<(ostream& out, Trolleybus &trolleybus);
+	friend bool operator==(Trolleybus trolleybus1, Trolleybus trolleybus2);
+	friend bool operator==(Trolleybus trolleybus, string code);
+	static void show_header();
+	operator const void*();
+	void show();
+	void clear();
+	void create();
 };

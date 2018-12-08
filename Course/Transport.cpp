@@ -5,6 +5,7 @@ Transport::Transport(){}
 Electro::Electro(){}
 Transport::~Transport(){}
 Electro::~Electro(){}
+
 void Transport::base_clear() {
 	code.clear();
 	surname.clear();
@@ -108,17 +109,41 @@ Tram::operator const void*() { return reinterpret_cast<const void*>(this); }
 
 Electro::operator const void*() { return reinterpret_cast<const void*>(this); }
 
+Trolleybus::operator const void*() { return reinterpret_cast<const void*>(this); }
+
+Wheel::operator const void*() { return reinterpret_cast<const void*>(this); }
+
 void Electro::electro_create() {
 	cout << "Enter amperage:";
 	enter_number(amperage, 3);
 }
 
-istream& operator >>(istream& in, Trolleybus &trolleybus) {
-	return in;
+void Electro::electro_clear() {
+	amperage = 0;
 }
 
-ostream& operator <<(ostream& out, Trolleybus &trolleybus) {
-	return out;
+void Fuel::fuel_create() {
+	cout << "Enter capacity:";
+	enter_number(fuel_capacity, 3);
+	cout << "Enter consumption:";
+	enter_number(consumption, 2);
+}
+
+void Wheel::wheel_create() {
+	cout << "Enter number of wheels:";
+	enter_number(number_of_wheels, 2);
+	cout << "Enter wheel size:";
+	enter_number(wheel_size, 2);
+}
+
+void Wheel::wheel_clear() {
+	number_of_wheels = 0;
+	wheel_size = 0;
+}
+
+void Fuel::fuel_clear() {
+	fuel_capacity = 0;
+	consumption = 0;
 }
 
 istream& operator >>(istream& in, Autobus &bus) {
@@ -139,6 +164,29 @@ void Electro::filtr_amperage(Tram &tram, string first, string second) {
 
 	}
 }
+
 bool Electro::comp_amperage(Tram &tram1, Tram &tram2) {
 	return tram1.amperage > tram2.amperage ? 1 : 0;
  }
+
+void Wheel::filtr_size(Trolleybus &trolleybus, string first, string second) {
+	try {
+		//cout << electro;
+		if (trolleybus.wheel_size >= stoi(first) && trolleybus.wheel_size <= stoi(second))
+			trolleybus.show();
+	}
+	catch (...) {
+
+	}
+}
+
+void Wheel::filtr_number(Trolleybus &trolleybus, string first, string second) {
+	try {
+		//cout << electro;
+		if (trolleybus.number_of_wheels >= stoi(first) && trolleybus.number_of_wheels <= stoi(second))
+			trolleybus.show();
+	}
+	catch (...) {
+
+	}
+}

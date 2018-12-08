@@ -123,6 +123,7 @@
     <ClCompile Include="Stuff.cpp" />
     <ClCompile Include="Tram.cpp" />
     <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="Trolleybus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />

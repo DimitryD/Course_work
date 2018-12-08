@@ -136,6 +136,7 @@ void Menu::menu_user_manage() {
 void Menu::menu_add_information(int role) {
 	Driver driver;
 	Tram tram;
+	Trolleybus trolleybus;
 	char c;
 	menu_pointer = 1;
 	do {
@@ -165,7 +166,7 @@ void Menu::menu_add_information(int role) {
 			case 1:
 				if (menu_pointer == ++k) add_information(driver, "Drivers.txt");
 			case 2:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) add_information(trolleybus, "Trolleybuses.txt");
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k)add_information(tram, "Trams.txt");
 			default:
@@ -183,6 +184,7 @@ void Menu::menu_add_information(int role) {
 void Menu::menu_delete_information(int role) {
 	char c;
 	Driver driver;
+	Trolleybus trolleybus;
 	Tram tram;
 	menu_pointer = 1;
 	do {
@@ -212,7 +214,7 @@ void Menu::menu_delete_information(int role) {
 			case 1:
 				if (menu_pointer == ++k) delete_information(driver, "Drivers.txt", "id");
 			case 2:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) delete_information(trolleybus, "Trolleybuses.txt", "code");
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k) delete_information(tram, "Trams.txt", "code");
 			default:
@@ -258,7 +260,7 @@ void Menu::menu_sort_information(int role) {
 			case 2:
 			case 3:
 				if (menu_pointer == ++k) menu_sort_drivers();
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_sort_trolleybuses();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k) menu_sort_trams();
 			default:
@@ -309,7 +311,7 @@ void Menu::menu_print_information(int role){
 			case 2:
 			case 3:
 				if (menu_pointer == ++k) show_information(driver, "Drivers.txt");
-				if (menu_pointer == ++k) show_information(trolleybus, "Trollebuses.txt");
+				if (menu_pointer == ++k) show_information(trolleybus, "Trolleybuses.txt");
 				if (menu_pointer == ++k) show_information(bus, "Buses.txt");
 				if (menu_pointer == ++k) show_information(tram, "Trams.txt");
 			default:
@@ -356,7 +358,7 @@ void Menu::menu_search_information(int role) {
 			case 2:
 			case 3:
 				if (menu_pointer == ++k) menu_search_drivers();
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_search_trolleybuses();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k) menu_search_trams();
 			default:
@@ -402,7 +404,7 @@ void Menu::menu_filtr_information(int role) {
 			case 2:
 			case 3:
 				if (menu_pointer == ++k) menu_filtr_drivers();
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) menu_filtr_trolleybuses();
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k) menu_filtr_trams();
 			default:
@@ -458,6 +460,7 @@ void Menu::menu_sort_drivers() {
 void Menu::menu_edit_information(int role) {
 	char c;
 	Driver driver;
+	Trolleybus trolleybus;
 	Tram tram;
 	menu_pointer = 1;
 	do {
@@ -487,7 +490,7 @@ void Menu::menu_edit_information(int role) {
 			case 1:
 				if (menu_pointer == ++k) edit_information(driver, "Drivers.txt", "id");
 			case 2:
-				if (menu_pointer == ++k);
+				if (menu_pointer == ++k) edit_information(trolleybus, "Trolleybuses.txt", "code");
 				if (menu_pointer == ++k);
 				if (menu_pointer == ++k) edit_information(tram, "Trams.txt", "code");
 			default:
@@ -694,3 +697,124 @@ void Menu::menu_search_trams() {
 	return;
 }
 
+void Menu::menu_filtr_trolleybuses() {
+	menu_pointer = 1;
+	char c;
+	Trolleybus trolleybus;
+	do {
+		system("cls");
+		print_in_menu(1, "Filtr by year");
+		print_in_menu(2, "Filtr by distance");
+		print_in_menu(3, "Filtr by amperage");
+		print_in_menu(4, "Filtr by wheel_size");
+		print_in_menu(5, "Filtr by wheel_number");
+		print_in_menu(6, "Back");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 6)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				filtr_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string, string))(Transport::filtr_year));
+				break;
+			case 2:
+				filtr_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string, string))(Transport::filtr_distance));
+				break;
+			case 3:
+				filtr_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string, string))(Electro::filtr_amperage));
+				break;
+			case 4:
+				filtr_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string, string))(Wheel::filtr_size));
+				break;
+			case 5:
+				filtr_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string, string))(Wheel::filtr_number));
+				break;
+			case 6:
+				menu_pointer = 1;
+				return;
+			}
+		}
+	} while (1);
+	return;
+}
+
+void Menu::menu_sort_trolleybuses() {
+	menu_pointer = 1;
+	char c;
+	Trolleybus trolleybus;
+	do {
+		system("cls");
+		print_in_menu(1, "Sort by surname");
+		print_in_menu(2, "Sort by year");
+		print_in_menu(3, "Sort by distance");
+		print_in_menu(4, "Sort by amperage");
+		print_in_menu(5, "Back");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 5)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				sort_information(trolleybus, "Trolleybuses.txt", (bool(*)(const void *, const void *))(Transport::comp_surname));
+				break;
+			case 2:
+				sort_information(trolleybus, "Trolleybuses.txt" ,(bool(*)(const void *, const void *))(Transport::comp_year));
+				break;
+			case 3:
+				sort_information(trolleybus, "Trolleybuses.txt" ,(bool(*)(const void *, const void *))(Transport::comp_distance));
+				break;
+			case 4:
+				sort_information(trolleybus, "Trolleybuses.txt" ,(bool(*)(const void *, const void *))(Electro::comp_amperage));
+				break;
+			case 5:
+				menu_pointer = 1;
+				return;
+			}
+		}
+	} while (1);
+}
+
+void Menu::menu_search_trolleybuses() {
+	menu_pointer = 1;
+	char c;
+	Trolleybus trolleybus;
+	do {
+		system("cls");
+		print_in_menu(1, "Search by surname");
+		print_in_menu(2, "Search by model");
+		print_in_menu(3, "Search by route");
+		print_in_menu(4, "Back");
+		c = _getch();
+
+		if (c == 72 && menu_pointer > 1)
+			menu_pointer--;
+		if (c == 80 && menu_pointer < 4)
+			menu_pointer++;
+		if (c == '\r') {
+			system("cls");
+			switch (menu_pointer) {
+			case 1:
+				search_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string))Transport::search_surname);
+				break;
+			case 2:
+				search_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string))Transport::search_model);
+				break;
+			case 3:
+				search_information(trolleybus, "Trolleybuses.txt", (void(*)(const void *, string))Transport::search_route);
+				break;
+			case 4:
+				menu_pointer = 1;
+				return;
+			}
+		}
+	} while (1);
+	return;
+}

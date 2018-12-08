@@ -59,7 +59,7 @@ void Tram::show() {
 
 void Tram::clear() {
 	base_clear();
-	amperage = 0;
+	electro_clear();
 	wheel_type = 0;
 }
 
