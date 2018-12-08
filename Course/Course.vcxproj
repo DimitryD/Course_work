@@ -121,6 +121,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Stuff.cpp" />
+    <ClCompile Include="Tram.cpp" />
     <ClCompile Include="Transport.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -187,3 +187,11 @@ bool operator==(Driver driver1, Driver driver2) {
 bool operator==(Driver driver, string id) {
 	return !id.compare(to_string(driver.id));
 }
+
+string Driver::get_name() { return name; }
+
+string Driver::get_surname() { return surname; }
+
+string Driver::get_patronymic() { return patronymic; }
+
+string Driver::get_route() { return itinerary; }

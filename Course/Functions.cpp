@@ -69,3 +69,11 @@ void show_users() {
 	_getch();
 	return;
 }
+
+void enter_bool(bool &var) {
+	char c;
+	do {
+		c = _getch();
+	} while (c != 48 && c != 49);
+	c == 48 ? var = 0 : var = 1;
+}

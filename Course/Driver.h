@@ -40,5 +40,9 @@ public:
 	static void show_header();
 	void create();
 	void clear();
+	string get_name();
+	string get_surname();
+	string get_patronymic();
+	string get_route();
 };
 

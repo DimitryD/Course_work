@@ -1,3 +1,4 @@
+21 Vika Koshman Dmitrievna 19 2 A 666 450 1234 000
+0 Dmitry Grishin Vasilievich 18 0 A 43 300 +375444734794 738
 1 Ariana Gorodeckaya Mikhailovna 18 1 B 45 250 +375177829441 x32
-0 Dmtitry Grishin Vasilievich 18 0 A 43 300 +375444734794 738
 2 b b b 10 10 b b 10 b b

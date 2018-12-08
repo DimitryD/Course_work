@@ -1,11 +1,144 @@
 #include "Transport.h"
 
 
-Transport::Transport(){
+Transport::Transport(){}
+Electro::Electro(){}
+Transport::~Transport(){}
+Electro::~Electro(){}
+void Transport::base_clear() {
+	code.clear();
+	surname.clear();
+	name.clear();
+	patronymic.clear();
+	model.clear();
+	year = 0;
+	distance = 0;
+	route.clear();
+}
 
+void Transport::get_driver() {
+	string id;
+	list<Driver> drivers;
+	do {
+		cout << "Enter driver id:";
+		cin >> id;
+		read_information_from_file(drivers, "Drivers.txt");
+		find_if(drivers.begin(), drivers.end(), [id, this](Driver tmp) {
+			if (tmp == id) {
+				this->name = tmp.get_name();
+				this->surname = tmp.get_surname();
+				this->patronymic = tmp.get_patronymic();
+				this->route = tmp.get_route();
+				return true;
+			}
+			return false;
+		});
+		if (name.empty()) {
+			system("cls");
+			cout << "This driver doesn't exist" << endl;
+		}
+	} while (name.empty());
+}
+
+void Transport::base_create() {
+	cout << "Enter code:";
+	cin >> code;
+	get_driver();
+	cout << "Enter model:";
+	cin >> model;
+	do {
+		cout << "Enter year:";
+		enter_number(year, 4);
+	} while (1970 > year || year > 2018);
+	cout << "Enter distance:";
+	enter_number(distance, 7);
+}
+
+void Transport::filtr_year(Transport *transport, string first, string second) {
+	try {
+		if (transport->year >= stoi(first) && transport->year <= stoi(second))
+			transport->show();
+	}
+	catch (...) {
+
+	}
+}
+
+void Transport::filtr_distance(Transport *transport, string first, string second) {
+	try {
+		if (transport->distance >= stoi(first) && transport->distance <= stoi(second))
+			transport->show();
+	}
+	catch (...) {
+
+	}
+}
+
+bool Transport::comp_surname(Transport *transport1, Transport *transport2){ 
+	return transport1->surname.compare(transport2->surname) > 0 ? 0 : 1; 
+}
+
+bool Transport::comp_year(Transport *transport1, Transport *transport2) {
+	return transport1->year> transport2->year ? 1 : 0;
+}
+
+bool Transport::comp_distance(Transport *transport1, Transport *transport2) {
+	return transport1->distance > transport2->distance ? 1 : 0;
+}
+
+void  Transport::search_surname(Transport *transport, string word) {
+	if (!transport->surname.compare(word))
+		transport->show();
+}
+
+void  Transport::search_model(Transport *transport, string word) {
+	if (!transport->model.compare(word))
+		transport->show();
+}
+
+void  Transport::search_route(Transport *transport, string word) {
+	if (!transport->route.compare(word))
+		transport->show();
 }
 
 
-Transport::~Transport(){
+Transport::operator const void*() { return reinterpret_cast<const void*>(this); }
 
+Tram::operator const void*() { return reinterpret_cast<const void*>(this); }
+
+Electro::operator const void*() { return reinterpret_cast<const void*>(this); }
+
+void Electro::electro_create() {
+	cout << "Enter amperage:";
+	enter_number(amperage, 3);
 }
+
+istream& operator >>(istream& in, Trolleybus &trolleybus) {
+	return in;
+}
+
+ostream& operator <<(ostream& out, Trolleybus &trolleybus) {
+	return out;
+}
+
+istream& operator >>(istream& in, Autobus &bus) {
+	return in;
+}
+
+ostream& operator <<(ostream& out, Autobus &bus) {
+	return out;
+}
+
+void Electro::filtr_amperage(Tram &tram, string first, string second) {
+	try {
+		//cout << electro;
+		if (tram.amperage >= stoi(first) && tram.amperage <= stoi(second))
+			tram.show();
+	}
+	catch (...) {
+
+	}
+}
+bool Electro::comp_amperage(Tram &tram1, Tram &tram2) {
+	return tram1.amperage > tram2.amperage ? 1 : 0;
+ }

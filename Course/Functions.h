@@ -19,13 +19,7 @@ class Driver;
 Admin authorization(string filename);
 string stars();
 string encryption(string &str,int key);
-
+void enter_bool(bool &var);
 
 //Show functions
 void show_users();
-
-
-//Filtr functions
-
-
-
