@@ -15,7 +15,8 @@ ostream& operator <<(ostream& out, Driver &driver) {
 		<< driver.itinerary << ' '
 		<< driver.salary << ' '
 		<< driver.telephone_number << ' '
-		<< driver.transport_code << endl;
+		<< driver.transport_code<<' '
+		<< driver.rent << endl;
 }
 
 istream& operator >>(istream& in, Driver &driver) {
@@ -29,7 +30,8 @@ istream& operator >>(istream& in, Driver &driver) {
 		>> driver.itinerary
 		>> driver.salary
 		>> driver.telephone_number
-		>> driver.transport_code;
+		>> driver.transport_code
+		>> driver.rent;
 }
 
 void Driver::show() {
@@ -44,12 +46,13 @@ void Driver::show() {
 		<< setw(11) << itinerary << '|'
 		<< setw(8) << salary << '|'
 		<< setw(18) << telephone_number << '|'
-		<< setw(16) << transport_code << '|' << endl;
-	cout << setw(161) << setfill((char)196) << ' ' <<endl;
+		<< setw(16) << transport_code << '|' 
+		<<setw(10)<< (rent ? "Rented" : "Free" )<<'|' << endl;
+	cout << setw(172) << setfill((char)196) << ' ' <<endl;
 }
 
 void Driver::show_header() {
-	cout << setw(161) << setfill((char)196) << ' ' << endl;
+	cout << setw(172) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
 		<< setw(8) << "Id" << '|'
 		<< setw(20) << "Surname" << '|'
@@ -61,8 +64,9 @@ void Driver::show_header() {
 		<< setw(11) << "Itinerary" << '|'
 		<< setw(8) << "Salary" << '|'
 		<< setw(18) << "Telephone number" << '|'
-		<< setw(16) << "Transport code" << '|' << endl;
-	cout << setw(161) << setfill((char)196) << ' ' << endl;
+		<< setw(16) << "Transport code" << '|'
+		<< setw(10) << "Rent" << '|' << endl;
+	cout << setw(172) << setfill((char)196) << ' ' << endl;
 }
 
 void Driver::create() {
@@ -195,3 +199,11 @@ string Driver::get_surname() { return surname; }
 string Driver::get_patronymic() { return patronymic; }
 
 string Driver::get_route() { return itinerary; }
+
+bool Driver::check_rent() {
+	return rent;
+}
+
+void Driver::set_rent() {
+	rent = 1;
+}

@@ -23,3 +23,5 @@ void enter_bool(bool &var);
 
 //Show functions
 void show_users();
+void rent_bus();
+void rent_driver();

@@ -77,3 +77,38 @@ void enter_bool(bool &var) {
 	} while (c != 48 && c != 49);
 	c == 48 ? var = 0 : var = 1;
 }
+
+void rent_bus() {
+
+
+}
+
+
+void rent_driver() {
+	system("cls");
+	list<Driver> drivers;
+	read_information_from_file(drivers, "Drivers.txt");
+	string id;
+	bool flag = 1;
+	cout << "Enter code:";
+	cin >> id;
+	find_if(drivers.begin(), drivers.end(), [id,&flag](Driver &tmp) {
+		if (tmp == id) {
+			if (tmp.check_rent())
+				return false;
+			tmp.set_rent();
+			flag = 0;
+			cout << "Rented tommorow" << endl;
+			_getch();
+			return true;
+		}
+		return false;
+	});
+	if (flag) {
+		cout << "Can not be rent" << endl;
+		_getch();
+	}
+	else {
+		write_information_in_file(drivers, "Drivers.txt");
+	}
+}

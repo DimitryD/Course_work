@@ -17,6 +17,7 @@ class Driver{
 	string telephone_number;
 	string transport_code;
 	int id;
+	bool rent;
 public:
 	Driver();
 	~Driver();
@@ -40,6 +41,8 @@ public:
 	static void show_header();
 	void create();
 	void clear();
+	bool check_rent();
+	void set_rent();
 	string get_name();
 	string get_surname();
 	string get_patronymic();

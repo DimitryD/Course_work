@@ -53,6 +53,8 @@ void Menu::menu_user(int role) {
 		case 2:
 			print_in_menu(++i, "Add information");
 			print_in_menu(++i, "Delete information");
+			print_in_menu(++i, "Rent a bus tomorrow");
+			print_in_menu(++i, "Rent a driver tomorrow");
 		case 3:
 			print_in_menu(++i, "Print information");
 			print_in_menu(++i, "Sort information");
@@ -76,6 +78,8 @@ void Menu::menu_user(int role) {
 			case 2:
 				if (menu_pointer == ++k) menu_add_information(role);
 				if (menu_pointer == ++k) menu_delete_information(role);
+				if (menu_pointer == ++k) rent_bus();
+				if (menu_pointer == ++k) rent_driver();
 			case 3:
 				if (menu_pointer == ++k) menu_print_information(role);
 				if (menu_pointer == ++k) menu_sort_information(role);
