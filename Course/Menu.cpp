@@ -37,7 +37,7 @@ void Menu::menu_authorization() {
 }
 
 void Menu::print_in_menu(int pointer, const char *str) {
-	cout << ((pointer == menu_pointer) ? color<10, 0> : color<15, 0>) << str << endl;
+	cout << ((pointer == menu_pointer) ? color<6, 15> : color<0, 15>) << str << endl;
 }
 
 void Menu::menu_user(int role) {
@@ -127,7 +127,8 @@ void Menu::menu_user_manage() {
 				delete_information(user, "User.txt", "login");
 				break;
 			case 4:
-				show_users();
+				//show_users();
+				show_information(user, "User.txt");
 				break;
 			case 5:
 				menu_pointer = 1;

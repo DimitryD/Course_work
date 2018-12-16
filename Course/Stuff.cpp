@@ -152,7 +152,7 @@ bool check_information(T check, string filename) {
 	read_information_from_file(list, filename);
 	for (T tmp : list) {
 		if (check == tmp) {
-			cout << "Something has been taken" << endl;
+			cout << "Record with this code exist. Try again" << endl;
 			return true;
 		}
 	}
@@ -221,7 +221,7 @@ void search_information(T variable, string filename, void(*searcher)(const void*
 	list<T> list;
 	string word;
 	read_information_from_file(list, filename);
-	cout << "Enter first:";
+	cout << "Enter key:";
 	cin >> word;
 	system("cls");
 	T::show_header();

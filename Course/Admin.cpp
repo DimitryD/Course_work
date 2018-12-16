@@ -45,6 +45,24 @@ void Admin::create() {
 	system("cls");
 }
 
+void Admin::show() {
+	cout << setfill(' ') << '|' << setw(20) << login
+		<< '|' << setw(30) << name 
+		<< '|' << setw(30) << surname 
+		<< '|' << setw(10) << position << '|' << endl;
+	cout << setw(96) << setfill((char)196) << ' ' << endl;
+}
+
+void Admin::show_header() {
+	cout << setw(96) << setfill((char)196) << ' ' << endl;
+	cout << setfill(' ') << '|'
+		<< setw(20) << "Login"
+		<< '|' << setw(30) << "Name"
+		<< '|' << setw(30) << "Surname"
+		<< '|' << setw(10) << "Position" << '|' << endl;
+	cout << setw(96) << setfill((char)196) << ' ' << endl;
+}
+
 bool Admin::compare(Admin comp) {
 	return login.compare(comp.login);
 }

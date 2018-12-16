@@ -1,1 +1,2 @@
-1 Petya Vasya Grisha sw 1990 1000 43 10 10 10 18 1
+1 Yurchenko Pavel Sergeivich sw305 2015 1300 71m 68 6 10 20 1
+2 Mankevich Danila Alexandrovich sd30 1991 21300 7k 48 8 8 17 0

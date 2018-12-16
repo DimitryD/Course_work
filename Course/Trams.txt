@@ -1,3 +1,2 @@
-23 b b b 223 1997 12342 b 230 1
-1 Grishin Dmitry Vasilievich t143 1998 10000 54 220 1
-14 Grishin Dmitry Vasilievich 213 1988 12 43 12 1
+1 Novik Vladislav Sergeivich t143 1998 10000 54 220 1
+14 Sokolov Denis Antonovich a213 1988 1200 43 220 1

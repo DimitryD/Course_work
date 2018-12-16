@@ -11,7 +11,7 @@ class Trolleybus;
 class Autobus;
 class Transport{
 protected:
-	//static string validator_version;
+	static string validator_version;
 	string code;
 	string surname;
 	string name;

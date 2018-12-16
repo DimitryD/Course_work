@@ -34,5 +34,7 @@ public:
 	operator int();
 	void clear();
 	void create();
+	void show();
+	void show_header();
 	bool compare(Admin comp);
 };
