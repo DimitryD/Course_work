@@ -1,11 +1,11 @@
-#include "Functions.h"
+﻿#include "Functions.h"
 
 Admin authorization(string filename) {
 	Admin tmp, user;
 	ifstream file(filename);
 	string buffer;
 	if (!file) {
-		cout << "Error";
+		cout << "Ошибка";
 		_getch();
 		exit(1);
 	}
@@ -19,7 +19,7 @@ Admin authorization(string filename) {
 		}
 		file.clear();
 		file.seekg(0);
-		cout << "Authorization error. Please, try again" << endl;
+		cout << "Ошибка авторизации. Пожалуйста, повторите попытку" << endl;
 	}
 	user.clear();
 	user.authorized = false;
@@ -57,7 +57,7 @@ string encryption(string &str,int key) {
 void show_users() {
 	ifstream file("User.txt");
 	if (!file) {
-		cout << "Error";
+		cout << "Ошибка";
 		_getch();
 		exit(1);
 	}
@@ -65,7 +65,7 @@ void show_users() {
 	while (file >> tmp) {
 		cout << tmp;
 	}
-	cout << "Enter any key...";
+	cout << "Нажмите любую клавишу...";
 	_getch();
 	return;
 }

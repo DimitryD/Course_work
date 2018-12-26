@@ -1,4 +1,4 @@
-#include "Stuff.h"
+﻿#include "Stuff.h"
 
 template<int txt, int bg>
 ostream& color(ostream &text) {
@@ -77,7 +77,7 @@ void read_information_from_file(list<T> &list, string filename) {
 	T tmp;
 	ifstream file(filename);
 	if (!file) {
-		cout << "Error";
+		cout << "Ошибка";
 		_getch();
 		exit(1);
 	}
@@ -91,7 +91,7 @@ template <class T>
 void write_information_in_file(list<T> &list, string filename) {
 	ofstream file(filename);
 	if (!file) {
-		cout << "Error";
+		cout << "Ошибка";
 		_getch();
 		exit(1);
 	}
@@ -108,7 +108,7 @@ void show_information(T variable, string filename) {
 	list.back().show_header();
 	for (auto tmp : list)
 		tmp.show();
-	cout << "Enter any key...";
+	cout << "Нажмите любую клавишу...";
 	_getch();
 }
 
@@ -116,9 +116,7 @@ template <class T>
 void delete_information(T variable, string filename, string what) {
 	system("cls");
 	string what_delete;
-	cout << "Enter ";
-	cout << what;
-	cout << ':';
+	cout << "Введите " << what << ':';
 	cin >> what_delete;
 	list<T> list;
 	read_information_from_file(list, filename);
@@ -138,7 +136,7 @@ void add_information(T variable, string filename) {
 	} while (check_information(tmp, filename));
 	ofstream file(filename, ofstream::app);
 	if (!file) {
-		cout << "Error";
+		cout << "Ошибка";
 		_getch();
 		exit(1);
 	}
@@ -152,7 +150,7 @@ bool check_information(T check, string filename) {
 	read_information_from_file(list, filename);
 	for (T tmp : list) {
 		if (check == tmp) {
-			cout << "Record with this code exist. Try again" << endl;
+			cout << "Такая запись уже существует. Попробуйте ещё раз" << endl;
 			return true;
 		}
 	}
@@ -165,7 +163,7 @@ void edit_information(T variable, string filename, string what) {
 	T new_inf;
 	string what_to_edit;
 	bool flag = 0;
-	cout << "Enter " << what << ':';
+	cout << "Введите " << what << ':';
 	cin >> what_to_edit;
 	list <T> list;
 	read_information_from_file(list, filename);
@@ -180,7 +178,7 @@ void edit_information(T variable, string filename, string what) {
 		write_information_in_file(list, filename);
 	}
 	else {
-		cout << "Those information doesn't esist";
+		cout << "Такой записи не существует";
 		_getch();
 	}
 	system("cls");
@@ -210,7 +208,7 @@ void filtr_information(T variable,string filename, void(*filtrator)(const void *
 	system("cls");
 	T::show_header();
 	for_each(list.begin(), list.end(), [first, second, filtrator](T tmp) {filtrator(tmp, first, second); });
-	cout << "Enter any key...";
+	cout << "Нажмите любую клавишу...";
 	_getch();
 	return;
 }
@@ -221,12 +219,12 @@ void search_information(T variable, string filename, void(*searcher)(const void*
 	list<T> list;
 	string word;
 	read_information_from_file(list, filename);
-	cout << "Enter key:";
+	cout << "Введите искомое значение:";
 	cin >> word;
 	system("cls");
 	T::show_header();
 	for_each(list.begin(), list.end(), [word, searcher](T tmp) {searcher(tmp, word); });
-	cout << "Enter any key...";
+	cout << "Нажмите любую клавишу...";
 	_getch();
 	return;
 }

@@ -1,4 +1,4 @@
-#include "Transport.h"
+﻿#include "Transport.h"
 
 istream& operator >>(istream& in, Autobus &bus) {
 	return in >> bus.code
@@ -35,19 +35,19 @@ ostream& operator <<(ostream& out, Autobus &bus) {
 void Autobus::show_header() {
 	cout << setw(173) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
-		<< setw(8) << "code" << '|'
-		<< setw(20) << "Surname" << '|'
-		<< setw(20) << "Name" << '|'
-		<< setw(20) << "Patronymic" << '|'
-		<< setw(10) << "model " << '|'
-		<< setw(6) << "year" << '|'
-		<< setw(9) << "distance" << '|'
-		<< setw(7) << "route" << '|'
-		<< setw(15) << "fuel capacity" << '|'
-		<< setw(13) << "consumption" << "|"
-		<< setw(8) << "wheels" << '|'
-		<< setw(12) << "wheel size" << '|'
-		<< setw(10) << "Rent" << '|' << endl;
+		<< setw(8) << "Код" << '|'
+		<< setw(20) << "Фамилию" << '|'
+		<< setw(20) << "Имя" << '|'
+		<< setw(20) << "Отчество" << '|'
+		<< setw(10) << "Модель" << '|'
+		<< setw(6) << "Год" << '|'
+		<< setw(9) << "Пробег" << '|'
+		<< setw(7) << "Маршрут" << '|'
+		<< setw(15) << "Потребление" << '|'
+		<< setw(13) << "Объём бака" << "|"
+		<< setw(8) << "Кол-во колёс" << '|'
+		<< setw(12) << "Размер колёс" << '|'
+		<< setw(10) << "Занятость" << '|' << endl;
 	cout << setw(173) << setfill((char)196) << ' ' << endl;
 }
 
@@ -65,7 +65,7 @@ void Autobus::show() {
 		<< setw(13) << consumption << '|'
 		<< setw(8) << number_of_wheels << '|'
 		<< setw(12) << wheel_size << '|' 
-		<< setw(10) << (rent ? "Rented" : "Free") << '|' << endl;
+		<< setw(10) << (rent ? "Нанят" : "Свободен") << '|' << endl;
 	cout << setw(173) << setfill((char)196) << ' ' << endl;
 }
 
@@ -80,7 +80,7 @@ void Autobus::create() {
 	base_create();
 	fuel_create();
 	wheel_create();
-	cout << "Enter rent:";
+	cout << "Введите занятость:";
 	enter_bool(rent);
 	system("cls");
 }

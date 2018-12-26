@@ -1,4 +1,4 @@
-#include "Transport.h"
+﻿#include "Transport.h"
 
 istream& operator >>(istream& in, Trolleybus &trolleybus) {
 	return in >> trolleybus.code
@@ -31,17 +31,17 @@ ostream& operator <<(ostream& out, Trolleybus &trolleybus) {
 void Trolleybus::show_header() {
 	cout << setw(143) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
-		<< setw(8) << "code" << '|'
-		<< setw(20) << "Surname" << '|'
-		<< setw(20) << "Name" << '|'
-		<< setw(20) << "Patronymic" << '|'
-		<< setw(10) << "model " << '|'
-		<< setw(6) << "year" << '|'
-		<< setw(9) << "distance" << '|'
-		<< setw(7) << "route" << '|'
-		<< setw(10) << "amperage" << '|'
-		<< setw(8) << "wheels" << '|' 
-		<< setw(12) << "wheel size" << '|' << endl;
+		<< setw(8) << "Код" << '|'
+		<< setw(20) << "Фамилия" << '|'
+		<< setw(20) << "Имя" << '|'
+		<< setw(20) << "Отчество" << '|'
+		<< setw(10) << "Модель" << '|'
+		<< setw(6) << "Год" << '|'
+		<< setw(9) << "Пробег" << '|'
+		<< setw(7) << "Маршрут" << '|'
+		<< setw(10) << "Напряжение" << '|'
+		<< setw(8) << "Кол-во колёс" << '|' 
+		<< setw(12) << "Размер колёс" << '|' << endl;
 	cout << setw(143) << setfill((char)196) << ' ' << endl;
 }
 

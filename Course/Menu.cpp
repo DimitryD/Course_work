@@ -1,4 +1,4 @@
-#include "Menu.h"
+﻿#include "Menu.h"
 #include <conio.h>
 #include "Functions.h"
 
@@ -13,8 +13,8 @@ void Menu::menu_authorization() {
 	char c;
 	do {
 		system("cls");
-		print_in_menu(1, "Authorization");
-		print_in_menu(2, "Exit");
+		print_in_menu(1, "Авторизация");
+		print_in_menu(2, "Выход");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -49,20 +49,20 @@ void Menu::menu_user(int role) {
 		switch (role) {
 		
 		case 1:
-			print_in_menu(++i, "Manage user");
+			print_in_menu(++i, "Управление пользователями");
 		case 2:
-			print_in_menu(++i, "Add information");
-			print_in_menu(++i, "Delete information");
-			print_in_menu(++i, "Rent a bus tomorrow");
-			print_in_menu(++i, "Rent a driver tomorrow");
+			print_in_menu(++i, "Добавить данные");
+			print_in_menu(++i, "Удалить данные");
+			print_in_menu(++i, "Нанять автобус на завтра");
+			print_in_menu(++i, "Нанять водителя на завтра");
 		case 3:
-			print_in_menu(++i, "Print information");
-			print_in_menu(++i, "Sort information");
-			print_in_menu(++i, "Filtr information");
-			print_in_menu(++i, "Edit information");
-			print_in_menu(++i, "Search information");
+			print_in_menu(++i, "Вывести данные");
+			print_in_menu(++i, "Отсортироватьданные");
+			print_in_menu(++i, "Отфильтровать данные");
+			print_in_menu(++i, "Редактировать данные");
+			print_in_menu(++i, "Найти данные");
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -103,11 +103,11 @@ void Menu::menu_user_manage() {
 	char c;
 	do {
 		system("cls");
-		print_in_menu(1, "Add user");
-		print_in_menu(2, "Edit user");
-		print_in_menu(3, "Delete user");
-		print_in_menu(4, "Show users");
-		print_in_menu(5, "Back");
+		print_in_menu(1, "Добавить пользователя");
+		print_in_menu(2, "Редактировать пользователя");
+		print_in_menu(3, "Удалить пользователя");
+		print_in_menu(4, "Вывести пользователей");
+		print_in_menu(5, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -127,7 +127,7 @@ void Menu::menu_user_manage() {
 				delete_information(user, "User.txt", "login");
 				break;
 			case 4:
-				//show_users();
+				show_users();
 				show_information(user, "User.txt");
 				break;
 			case 5:
@@ -151,14 +151,14 @@ void Menu::menu_add_information(int role) {
 		switch (role) {
 
 		case 1:
-			print_in_menu(++i, "Add driver");
+			print_in_menu(++i, "Добавить водителя");
 		case 2:
-			print_in_menu(++i, "Add trollebus");
-			print_in_menu(++i, "Add bus");
-			print_in_menu(++i, "Add tram");
+			print_in_menu(++i, "Добавить троллейбус");
+			print_in_menu(++i, "Добавить автобус");
+			print_in_menu(++i, "Добавить трамвай");
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -200,14 +200,14 @@ void Menu::menu_delete_information(int role) {
 		switch (role) {
 
 		case 1:
-			print_in_menu(++i, "Delete driver");
+			print_in_menu(++i, "Удалить водителя");
 		case 2:
-			print_in_menu(++i, "Delete trollebus");
-			print_in_menu(++i, "Delete bus");
-			print_in_menu(++i, "Delete tram");
+			print_in_menu(++i, "Удалить троллейбус");
+			print_in_menu(++i, "Удалить автобус");
+			print_in_menu(++i, "Удалить трамвай");
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -246,13 +246,13 @@ void Menu::menu_sort_information(int role) {
 		case 1:
 		case 2:
 		case 3:
-			print_in_menu(++i, "Sort drivers");
-			print_in_menu(++i, "Sort trollebuses");
-			print_in_menu(++i, "Sort buses");
-			print_in_menu(++i, "Sort trams");
+			print_in_menu(++i, "Отсортировать водителей");
+			print_in_menu(++i, "Отсортировать троллейбусы");
+			print_in_menu(++i, "Отсортировать автобусы");
+			print_in_menu(++i, "Отсортировать трамваи");
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -296,14 +296,14 @@ void Menu::menu_print_information(int role){
 		case 1:
 		case 2:
 		case 3:
-			print_in_menu(++i, "Print drivers");
-			print_in_menu(++i, "Print trollebuses");
-			print_in_menu(++i, "Print buses");
-			print_in_menu(++i, "Print trams");
+			print_in_menu(++i, "Вывести водителей");
+			print_in_menu(++i, "Вывести троллейбусы");
+			print_in_menu(++i, "Вывести автобусы");
+			print_in_menu(++i, "Вывести трамваи");
 
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -344,13 +344,13 @@ void Menu::menu_search_information(int role) {
 		case 1:
 		case 2:
 		case 3:
-			print_in_menu(++i, "Search driver");
-			print_in_menu(++i, "Search trollebus");
-			print_in_menu(++i, "Search bus");
-			print_in_menu(++i, "Search tram");
+			print_in_menu(++i, "Найти водителя");
+			print_in_menu(++i, "Найти троллейбус");
+			print_in_menu(++i, "Найти автобус");
+			print_in_menu(++i, "Найти трамвай");
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -390,13 +390,13 @@ void Menu::menu_filtr_information(int role) {
 		case 1:
 		case 2:
 		case 3:
-			print_in_menu(++i, "Filtr drivers");
-			print_in_menu(++i, "Filtr trollebuses");
-			print_in_menu(++i, "Filtr buses");
-			print_in_menu(++i, "Filtr trams");
+			print_in_menu(++i, "Отфильтровать водителей");
+			print_in_menu(++i, "Отфильтровать троллейбусы");
+			print_in_menu(++i, "Отфильтровать автобусы");
+			print_in_menu(++i, "Отфильтровать трамваи");
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -430,11 +430,11 @@ void Menu::menu_sort_drivers() {
 	Driver driver;
 	do {
 		system("cls");
-		print_in_menu(1, "Sort by name");
-		print_in_menu(2, "Sort by age");
-		print_in_menu(3, "Sort by experience");
-		print_in_menu(4, "Sort by salary");
-		print_in_menu(5, "Back");
+		print_in_menu(1, "Отсортировать по имени");
+		print_in_menu(2, "Отсортировать по возрасту");
+		print_in_menu(3, "Отсортировать по стажу");
+		print_in_menu(4, "Отсортировать по зарплате");
+		print_in_menu(5, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -477,14 +477,14 @@ void Menu::menu_edit_information(int role) {
 		switch (role) {
 
 		case 1:
-			print_in_menu(++i, "Edit driver");
+			print_in_menu(++i, "Редактировать водителя");
 		case 2:
-			print_in_menu(++i, "Edit trollebus");
-			print_in_menu(++i, "Edit bus");
-			print_in_menu(++i, "Edit tram");
+			print_in_menu(++i, "Редактировать троллейбус");
+			print_in_menu(++i, "Редактировать автобус");
+			print_in_menu(++i, "Редактировать трамвай");
 
 		default:
-			print_in_menu(++i, "Back");
+			print_in_menu(++i, "Назад");
 		}
 		c = _getch();
 
@@ -519,10 +519,10 @@ void Menu::menu_filtr_drivers() {
 	Driver driver;
 	do {
 		system("cls");
-		print_in_menu(1, "Filtr by age");
-		print_in_menu(2, "Filtr by experience");
-		print_in_menu(3, "Filtr by salary");
-		print_in_menu(4, "Back");
+		print_in_menu(1, "Отфильтровать по возрасту");
+		print_in_menu(2, "Отфильтровать по стажу");
+		print_in_menu(3, "Отфильтровать по зарплате");
+		print_in_menu(4, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -556,11 +556,11 @@ void Menu::menu_search_drivers() {
 	Driver driver;
 	do {
 		system("cls");
-		print_in_menu(1, "Search by surname");
-		print_in_menu(2, "Search by category");
-		print_in_menu(3, "Search by itinerary");
-		print_in_menu(4, "Search by transport code");
-		print_in_menu(5, "Back");
+		print_in_menu(1, "Найти по фамилии");
+		print_in_menu(2, "Найти по категории");
+		print_in_menu(3, "Найти по маршруту");
+		print_in_menu(4, "Найти по коду транспорта");
+		print_in_menu(5, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -597,10 +597,10 @@ void Menu::menu_filtr_trams() {
 	Tram tram;
 	do {
 		system("cls");
-		print_in_menu(1, "Filtr by year");
-		print_in_menu(2, "Filtr by distance");
-		print_in_menu(3, "Filtr by amperage");
-		print_in_menu(4, "Back");
+		print_in_menu(1, "Отфильтровать по году");
+		print_in_menu(2, "Отфильтровать по пробегу");
+		print_in_menu(3, "Отфильтровать по напряжению");
+		print_in_menu(4, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -634,11 +634,11 @@ void Menu::menu_sort_trams() {
 	Tram tram;
 	do {
 		system("cls");
-		print_in_menu(1, "Sort by surname");
-		print_in_menu(2, "Sort by year");
-		print_in_menu(3, "Sort by distance");
-		print_in_menu(4, "Sort by amperage");
-		print_in_menu(5, "Back");
+		print_in_menu(1, "Отсортировать по фамилии");
+		print_in_menu(2, "Отсортировать по году");
+		print_in_menu(3, "Отсортировать по пробегу");
+		print_in_menu(4, "Отсортировать по напряжению");
+		print_in_menu(5, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -674,10 +674,10 @@ void Menu::menu_search_trams() {
 	Tram tram;
 	do {
 		system("cls");
-		print_in_menu(1, "Search by surname");
-		print_in_menu(2, "Search by model");
-		print_in_menu(3, "Search by route");
-		print_in_menu(4, "Back");
+		print_in_menu(1, "Найти по фамилии");
+		print_in_menu(2, "Найти по модели");
+		print_in_menu(3, "Найти по маршруту");
+		print_in_menu(4, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -711,12 +711,12 @@ void Menu::menu_filtr_trolleybuses() {
 	Trolleybus trolleybus;
 	do {
 		system("cls");
-		print_in_menu(1, "Filtr by year");
-		print_in_menu(2, "Filtr by distance");
-		print_in_menu(3, "Filtr by amperage");
-		print_in_menu(4, "Filtr by wheel_size");
-		print_in_menu(5, "Filtr by wheel_number");
-		print_in_menu(6, "Back");
+		print_in_menu(1, "Отфильтровать по году");
+		print_in_menu(2, "Отфильтровать по пробегу");
+		print_in_menu(3, "Отфильтровать по напряжению");
+		print_in_menu(4, "Отфильтровать по размеру колёс");
+		print_in_menu(5, "Отфильтровать по количеству колёс");
+		print_in_menu(6, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -756,11 +756,11 @@ void Menu::menu_sort_trolleybuses() {
 	Trolleybus trolleybus;
 	do {
 		system("cls");
-		print_in_menu(1, "Sort by surname");
-		print_in_menu(2, "Sort by year");
-		print_in_menu(3, "Sort by distance");
-		print_in_menu(4, "Sort by amperage");
-		print_in_menu(5, "Back");
+		print_in_menu(1, "Отсортировать по фамилии");
+		print_in_menu(2, "Отсортировать по году");
+		print_in_menu(3, "Отсортировать по пробегу");
+		print_in_menu(4, "Отсортировать по напряжению");
+		print_in_menu(5, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -796,10 +796,10 @@ void Menu::menu_search_trolleybuses() {
 	Trolleybus trolleybus;
 	do {
 		system("cls");
-		print_in_menu(1, "Search by surname");
-		print_in_menu(2, "Search by model");
-		print_in_menu(3, "Search by route");
-		print_in_menu(4, "Back");
+		print_in_menu(1, "Найти по отчеству");
+		print_in_menu(2, "Найти по модели");
+		print_in_menu(3, "Найти по маршруту");
+		print_in_menu(4, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -833,13 +833,13 @@ void  Menu::menu_filtr_buses() {
 	Autobus bus;
 	do {
 		system("cls");
-		print_in_menu(1, "Filtr by year");
-		print_in_menu(2, "Filtr by distance");
-		print_in_menu(3, "Filtr by wheel_size");
-		print_in_menu(4, "Filtr by wheel_number");
-		print_in_menu(5, "Filtr by capacity");
-		print_in_menu(6, "Filtr by consumption");
-		print_in_menu(7, "Back");
+		print_in_menu(1, "Отфильтровать по году");
+		print_in_menu(2, "Отфильтровать по пробегу");
+		print_in_menu(3, "Отфильтровать по размеру колёс");
+		print_in_menu(4, "Отфильтровать по количеству колёс");
+		print_in_menu(5, "Отфильтровать по запасу топлива");
+		print_in_menu(6, "Отфильтровать по потреблению топлива");
+		print_in_menu(7, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -882,12 +882,12 @@ void  Menu::menu_sort_buses() {
 	Autobus bus;
 	do {
 		system("cls");
-		print_in_menu(1, "Sort by surname");
-		print_in_menu(2, "Sort by year");
-		print_in_menu(3, "Sort by distance");
-		print_in_menu(4, "Sort by capacity");
-		print_in_menu(5, "Sort by consumption");
-		print_in_menu(6, "Back");
+		print_in_menu(1, "Отсортировать по фамилии");
+		print_in_menu(2, "Отсортировать по году");
+		print_in_menu(3, "Отсортировать по пробегу");
+		print_in_menu(4, "Отсортировать по запасу топлива");
+		print_in_menu(5, "Отсортировать по потреблению топлива");
+		print_in_menu(6, "Назад");
 		c = _getch();
 
 		if (c == 72 && menu_pointer > 1)
@@ -926,10 +926,10 @@ void Menu::menu_search_buses() {
 	Autobus bus;
 	do {
 		system("cls");
-		print_in_menu(1, "Search by surname");
-		print_in_menu(2, "Search by model");
-		print_in_menu(3, "Search by route");
-		print_in_menu(4, "Back");
+		print_in_menu(1, "Найти по отчеству");
+		print_in_menu(2, "Найти по модели");
+		print_in_menu(3, "Найти по маршруту");
+		print_in_menu(4, "Назад");
 		c = _getch();
 		if (c == 72 && menu_pointer > 1)
 			menu_pointer--;

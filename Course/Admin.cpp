@@ -5,9 +5,9 @@ Admin::Admin(){}
 Admin::~Admin(){}
 
 void Admin::authorization() {
-	cout << "Enter login:";
+	cout << "Введите логин:";
 	cin >> login;
-	cout << "Enter password:";
+	cout << "Введите пароль:";
 	password = stars();
 	encryption(password,1);
 	system("cls");
@@ -25,22 +25,22 @@ void Admin::clear() {
 void Admin::create() {
 	//system("cls");
 	string buff;
-	cout << "Enter login:";
+	cout << "Введите логин:";
 	cin >> login;
 	do {
-		cout << "Enter password:";
+		cout << "Введите пароль:";
 		password = stars();
-		cout << "Enter password again:";
+		cout << "Введите пароль ещё раз:";
 		buff = stars();
 	} while (password.compare(buff));
 	encryption(password,1);
-	cout << "Enter name:";
+	cout << "Введите имя:";
 	cin >> name;
-	cout << "Enter surname:";
+	cout << "Введите фамилия:";
 	cin >> surname;
-	cout << "Enter position:";
+	cout << "Введите должность:";
 	cin >> position;
-	cout << "Enter access level:";
+	cout << "Введите уровень доступа:";
 	enter_number(role,1);
 	system("cls");
 }
@@ -56,10 +56,10 @@ void Admin::show() {
 void Admin::show_header() {
 	cout << setw(96) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
-		<< setw(20) << "Login"
-		<< '|' << setw(30) << "Name"
-		<< '|' << setw(30) << "Surname"
-		<< '|' << setw(10) << "Position" << '|' << endl;
+		<< setw(20) << "Логин"
+		<< '|' << setw(30) << "Имя"
+		<< '|' << setw(30) << "Фамилия"
+		<< '|' << setw(10) << "Должность" << '|' << endl;
 	cout << setw(96) << setfill((char)196) << ' ' << endl;
 }
 

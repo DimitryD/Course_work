@@ -1,4 +1,4 @@
-#include "Transport.h"
+﻿#include "Transport.h"
 
 
 Transport::Transport(){}
@@ -21,7 +21,7 @@ void Transport::get_driver() {
 	string id;
 	list<Driver> drivers;
 	do {
-		cout << "Enter driver id:";
+		cout << "Введите код водителя:";
 		cin >> id;
 		read_information_from_file(drivers, "Drivers.txt");
 		find_if(drivers.begin(), drivers.end(), [id, this](Driver tmp) {
@@ -36,22 +36,22 @@ void Transport::get_driver() {
 		});
 		if (name.empty()) {
 			system("cls");
-			cout << "This driver doesn't exist" << endl;
+			cout << "Такой записи не существует" << endl;
 		}
 	} while (name.empty());
 }
 
 void Transport::base_create() {
-	cout << "Enter code:";
+	cout << "Введите код:";
 	cin >> code;
 	get_driver();
-	cout << "Enter model:";
+	cout << "Введите модель:";
 	cin >> model;
 	do {
-		cout << "Enter year:";
+		cout << "Введите год:";
 		enter_number(year, 4);
 	} while (1970 > year || year > 2018);
-	cout << "Enter distance:";
+	cout << "Ввелите пробег:";
 	enter_number(distance, 7);
 }
 
@@ -116,7 +116,7 @@ Autobus::operator const void*() { return reinterpret_cast<const void*>(this); }
 Wheel::operator const void*() { return reinterpret_cast<const void*>(this); }
 
 void Electro::electro_create() {
-	cout << "Enter amperage:";
+	cout << "Введите напряжение:";
 	enter_number(amperage, 3);
 }
 
@@ -125,16 +125,16 @@ void Electro::electro_clear() {
 }
 
 void Fuel::fuel_create() {
-	cout << "Enter capacity:";
+	cout << "Введите запас топлива:";
 	enter_number(fuel_capacity, 3);
-	cout << "Enter consumption:";
+	cout << "Введите потребление топлива:";
 	enter_number(consumption, 2);
 }
 
 void Wheel::wheel_create() {
-	cout << "Enter number of wheels:";
+	cout << "Введите количество колёс";
 	enter_number(number_of_wheels, 2);
-	cout << "Enter wheel size:";
+	cout << "Введите размер колёс:";
 	enter_number(wheel_size, 2);
 }
 

@@ -1,4 +1,4 @@
-#include "Transport.h"
+﻿#include "Transport.h"
 
 istream& operator >>(istream& in, Tram &tram) {
 	return in >> tram.code
@@ -29,16 +29,16 @@ ostream& operator <<(ostream& out, Tram &tram) {
 void Tram::show_header() {
 	cout << setw(133) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
-		<< setw(8) << "code" << '|'
-		<< setw(20) << "Surname" << '|'
-		<< setw(20) << "Name" << '|'
-		<< setw(20) << "Patronymic" << '|'
-		<< setw(10) << "model "<< '|'
-		<< setw(6) << "year" << '|'
-		<< setw(9) << "distance" << '|'
-		<< setw(7) << "route"<< '|'
-		<< setw(10) << "amperage" << '|'
-		<< setw(11) << "wheel_type" << '|' << endl;
+		<< setw(8) << "Код" << '|'
+		<< setw(20) << "Фамилия" << '|'
+		<< setw(20) << "Имя" << '|'
+		<< setw(20) << "Отчество" << '|'
+		<< setw(10) << "Модель "<< '|'
+		<< setw(6) << "Год" << '|'
+		<< setw(9) << "Пробег" << '|'
+		<< setw(7) << "Маршрут"<< '|'
+		<< setw(10) << "Напряжение" << '|'
+		<< setw(11) << "Тип колёс" << '|' << endl;
 	cout << setw(133) << setfill((char)196) << ' ' << endl;
 }
 
@@ -53,7 +53,7 @@ void Tram::show() {
 		<< setw(9) << distance << '|'
 		<< setw(7) << route << '|'
 		<< setw(10) << amperage << '|'
-		<< setw(11) << (wheel_type?"Rubber":"Not rubber")<< '|' << endl;
+		<< setw(11) << (wheel_type?"Прорезиненные":"Непрорезиненные")<< '|' << endl;
 	cout << setw(133) << setfill((char)196) << ' ' << endl;
 }
 

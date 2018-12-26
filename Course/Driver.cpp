@@ -1,4 +1,4 @@
-#include "Driver.h"
+﻿#include "Driver.h"
 
 Driver::Driver(){}
 
@@ -47,53 +47,53 @@ void Driver::show() {
 		<< setw(8) << salary << '|'
 		<< setw(18) << telephone_number << '|'
 		<< setw(16) << transport_code << '|' 
-		<<setw(10)<< (rent ? "Rented" : "Free" )<<'|' << endl;
+		<<setw(10)<< (rent ? "Нанят" : "Свободен" )<<'|' << endl;
 	cout << setw(172) << setfill((char)196) << ' ' <<endl;
 }
 
 void Driver::show_header() {
 	cout << setw(172) << setfill((char)196) << ' ' << endl;
 	cout << setfill(' ') << '|'
-		<< setw(8) << "Id" << '|'
-		<< setw(20) << "Surname" << '|'
-		<< setw(20) << "Name" << '|'
-		<< setw(20) << "Patronymic" << '|'
-		<< setw(5) << "Age" << '|'
-		<< setw(12) << "Experience" << '|'
-		<< setw(10) << "Category" << '|'
-		<< setw(11) << "Itinerary" << '|'
-		<< setw(8) << "Salary" << '|'
-		<< setw(18) << "Telephone number" << '|'
-		<< setw(16) << "Transport code" << '|'
-		<< setw(10) << "Rent" << '|' << endl;
+		<< setw(8) << "Код" << '|'
+		<< setw(20) << "Фамилия" << '|'
+		<< setw(20) << "Имя" << '|'
+		<< setw(20) << "Отчество" << '|'
+		<< setw(5) << "Врзраст" << '|'
+		<< setw(12) << "Стаж" << '|'
+		<< setw(10) << "Категория" << '|'
+		<< setw(11) << "Маршрут" << '|'
+		<< setw(8) << "Зарплата" << '|'
+		<< setw(18) << "Номер телефона" << '|'
+		<< setw(16) << "Код транспорта" << '|'
+		<< setw(10) << "Занятость" << '|' << endl;
 	cout << setw(172) << setfill((char)196) << ' ' << endl;
 }
 
 void Driver::create() {
 
-	cout << "Enter id:";
+	cout << "Введите код:";
 	enter_number(id, 7);
-	cout << "Enter surname:";
+	cout << "Введите фамилию:";
 	cin >> surname;
-	cout << "Enter name:";
+	cout << "Введите имя:";
 	cin >> name;
-	cout << "Enter patronymic:";
+	cout << "Введите отчество:";
 	cin >> patronymic;
-	cout << "Enter age:";
+	cout << "Введите возраст:";
 	enter_number(age, 2);
-	cout << "Enter experience:";
+	cout << "Введите стаж:";
 	enter_number(experience, 2);
-	cout << "Enter category:";
+	cout << "Введите категорию:";
 	cin >> category;
-	cout << "Enter itinerary:";
+	cout << "Введите маршрут:";
 	cin >> itinerary;
-	cout << "Enter salary:";
+	cout << "Введите зарплату:";
 	enter_number(salary, 5);
-	cout << "Enter telephone number:";
+	cout << "Введите номер телефона:";
 	cin >> telephone_number;
-	cout << "Enter transport code:";
+	cout << "Введите код транспорта:";
 	cin >> transport_code;
-	cout << "Rent:";
+	cout << "Занятость:";
 	enter_bool(rent);
 	system("cls");
 	return;
